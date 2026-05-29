@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrimp's Alchemy</title>
+    <link rel="icon" type="image/png" href="icons/shrimp.png">
+    <link rel="icon" type="image/svg+xml" href="icons/shrimp.svg">
+    <link rel="stylesheet" href="css/inter.css">
+    <link rel="stylesheet" href="css/fa-all.min.css">
+    <link rel="stylesheet" href="css/fa-regular.min.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Left Sidebar -->
+    <div class="left-sidebar">
+        <button class="sidebar-btn" id="btn-cleanup" title="Clean Up">
+            <i class="fas fa-broom"></i>
+            <span>Clean Up</span>
+        </button>
+        <button class="sidebar-btn" id="btn-encyclopedia" title="Encyclopedia">
+            <i class="fas fa-book"></i>
+            <span>Encyclopedia</span>
+        </button>
+        <button class="sidebar-btn" id="btn-admin" title="Admin">
+            <i class="fas fa-user-lock"></i>
+            <span>Admin</span>
+        </button>
+    </div>
+
+    <!-- Canvas Area -->
+    <div class="canvas-area" id="canvas"></div>
+
+    <!-- Right Sidebar -->
+    <div class="right-sidebar" id="right-sidebar">
+        <div class="sidebar-search-wrap">
+            <input type="text" class="sidebar-search" id="sidebar-search" placeholder="Search...">
+            <button class="sidebar-search-clear hidden" id="sidebar-search-clear">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-elements" id="sidebar-elements"></div>
+    </div>
+
+    <!-- Encyclopedia Modal -->
+    <div class="modal-overlay hidden" id="encyclopedia-modal">
+        <div class="modal-content">
+            <div class="modal-tabs">
+                <button class="modal-tab active" data-tab="items">
+                    <i class="fas fa-leaf"></i>
+                    <span>Items</span>
+                </button>
+                <button class="modal-tab" data-tab="achievements">
+                    <i class="fas fa-award"></i>
+                    <span>Achievements</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="tab-content active" id="tab-items">
+                    <input type="text" class="search-box" id="search-box" placeholder="Search items...">
+                    <div class="items-layout" id="items-layout">
+                        <div class="items-list" id="items-list"></div>
+                        <div class="item-detail hidden" id="item-detail">
+                            <div class="detail-icon" id="detail-icon"></div>
+                            <div class="detail-name" id="detail-name"></div>
+                            <button class="detail-add-btn" id="detail-add-btn">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <div class="detail-recipes-label">Categories</div>
+                            <div class="detail-recipes" id="detail-recipes"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab-achievements">
+                    <div class="achievement-box">
+                        <div class="achievement-count" id="achievement-count">0 / 0</div>
+                        <div class="achievement-label">Discovered Items</div>
+                    </div>
+                    <div class="final-items-wrapper" id="final-items-wrapper">
+                        <div class="final-items-collapsed" id="final-items-collapsed">
+                            <div class="achievement-box" style="margin-top: 16px;">
+                                <div class="achievement-count" id="final-count">0 / 0</div>
+                                <div class="achievement-label">Final Items</div>
+                            </div>
+                            <div class="final-items-bar" id="final-items-bar">
+                                <span>Expand Final Items</span>
+                                <i class="fas fa-chevron-up"></i>
+                            </div>
+                        </div>
+                        <div class="final-items-expanded hidden" id="final-items-expanded">
+                            <div class="final-items-bar" id="final-items-collapse-bar">
+                                <span>Collapse</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="achievement-box" style="margin-top: 12px;">
+                                <div class="achievement-count" id="final-count-expanded">0 / 0</div>
+                                <div class="achievement-label">Final Items</div>
+                            </div>
+                            <div class="final-items-layout">
+                                <div class="final-items-list" id="final-items-list"></div>
+                                <div class="final-item-detail hidden" id="final-item-detail">
+                                    <div class="detail-icon" id="final-detail-icon"></div>
+                                    <div class="detail-name" id="final-detail-name"></div>
+                                    <div class="detail-recipes-label">Categories</div>
+                                    <div class="detail-recipes" id="final-detail-recipes"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- New Item Discovery Modal -->
+    <div class="modal-overlay hidden" id="discovery-modal">
+        <div class="discovery-content">
+            <div class="discovery-element" id="discovery-element"></div>
+            <div class="discovery-name" id="discovery-name"></div>
+            <div class="discovery-recipe" id="discovery-recipe"></div>
+            <div class="discovery-badge" id="discovery-badge"></div>
+            <div class="discovery-hint">Click anywhere to continue</div>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div class="modal-overlay hidden" id="confirm-modal">
+        <div class="confirm-content">
+            <div class="confirm-text">Are you sure you want to clear all elements from the canvas?</div>
+            <div class="confirm-buttons">
+                <button class="confirm-btn confirm-yes" id="confirm-yes">Yes</button>
+                <button class="confirm-btn confirm-no" id="confirm-no">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Password Modal -->
+    <div class="modal-overlay hidden" id="admin-password-modal">
+        <div class="confirm-content" style="padding:32px 32px 28px; gap:20px;">
+            <div class="confirm-text">Enter admin password</div>
+            <input type="password" class="admin-password-input" id="admin-password-input" placeholder="Password">
+            <div class="confirm-buttons">
+                <button class="confirm-btn confirm-yes" id="admin-password-enter">Enter</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=62"></script>
+</body>
+</html>
