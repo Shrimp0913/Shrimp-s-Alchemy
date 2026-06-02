@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icon Preview - Shrimp's Alchemy</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 { color: #f8fafc; margin-bottom: 10px; }
+        h2 { color: #94a3b8; margin-top: 40px; }
+        .subtitle { color: #64748b; margin-bottom: 40px; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .card {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #0f3460;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #e94560;
+            font-size: 16px;
+        }
+        .preview-box {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .icon-display {
+            width: 128px;
+            height: 128px;
+            border: 2px dashed #0f3460;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon-display img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .browser-tab {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #2d2d2d;
+            padding: 8px 16px;
+            border-radius: 8px 8px 0 0;
+            width: fit-content;
+            margin-top: 10px;
+        }
+        .browser-tab img {
+            width: 16px;
+            height: 16px;
+        }
+        .browser-tab span {
+            font-size: 13px;
+            color: #ccc;
+        }
+        .info {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #f8fafc;
+            background: #e94560;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🦐 Favicon 图标预览对比</h1>
+    <p class="subtitle"> Shrimp's Alchemy 标签页图标 - 新旧版本对比</p>
+
+    <h2>当前新图标（favicon.png - 透明背景）</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>PNG 文件预览 <span class="highlight">NEW</span></h3>
+            <div class="preview-box">
+                <div class="icon-display">
+                    <img src="icons/favicon.png" alt="New favicon">
+                </div>
+                <div class="icon-display" style="background: #333;">
+                    <img src="icons/favicon.png" alt="New favicon dark">
+                </div>
+            </div>
+            <div class="browser-tab">
+                <img src="icons/favicon.png" alt="">
+                <span>Shrimp's Alchemy</span>
+            </div>
+            <p class="info">
+                文件: icons/favicon.png<br>
+                尺寸: 128x128<br>
+                背景: 透明 (RGBA)
+            </p>
+        </div>
+        <div class="card">
+            <h3>SVG 源文件</h3>
+            <div class="preview-box">
+                <div class="icon-display">
+                    <img src="icons/shrimp.svg" alt="SVG source" style="width: 100px; height: 100px;">
+                </div>
+            </div>
+            <p class="info">
+                文件: icons/shrimp.svg<br>
+                来源: Font Awesome Free v7.2.0<br>
+                这是一个矢量图标，你的浏览器标签页实际上应该显示这个
+            </p>
+        </div>
+    </div>
+
+    <h2>旧图标（shrimp_old.png - 白色背景）</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>旧 PNG 文件预览 <span class="highlight" style="background: #666;">OLD</span></h3>
+            <div class="preview-box">
+                <div class="icon-display">
+                    <img src="icons/shrimp_old.png" alt="Old favicon">
+                </div>
+                <div class="icon-display" style="background: #333;">
+                    <img src="icons/shrimp_old.png" alt="Old favicon dark">
+                </div>
+            </div>
+            <div class="browser-tab">
+                <img src="icons/shrimp_old.png" alt="">
+                <span>Shrimp's Alchemy</span>
+            </div>
+            <p class="info">
+                文件: icons/shrimp_old.png (已从仓库移除)<br>
+                尺寸: 128x128<br>
+                背景: 白色不透明<br>
+                这个就是你 Safari 标签页现在显示的旧图标
+            </p>
+        </div>
+    </div>
+
+    <h2>问题分析</h2>
+    <div class="card">
+        <p class="info">
+            <strong>你看到的旧图标是这个白色背景的版本</strong>（上面第二个卡片）。<br><br>
+            Safari 严重缓存 favicon，即使文件已更新为透明背景的 <code>favicon.png</code>，它仍然显示缓存中的旧图标。<br><br>
+            <strong>解决方案：</strong>清除 Safari 图标缓存后重启浏览器。<br>
+            终端命令：<code>rm -rf ~/Library/Safari/Favicon\ Cache/</code>，然后完全退出并重新打开 Safari。
+        </p>
+    </div>
+</body>
+</html>
