@@ -191,6 +191,7 @@ function init() {
     finalItems.add('range');
     finalItems.add('icicles');
     finalItems.add('sunglasses');
+    finalItems.add('igloo');
 
     renderSidebar();
     updateAchievementCount();
