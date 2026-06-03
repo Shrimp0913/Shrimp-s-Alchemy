@@ -191,11 +191,11 @@ function init() {
     finalItems.add('tap');
     finalItems.add('tsunami');
     finalItems.add('lightbulb');
-    finalItems.add('magic-potion');
     finalItems.add('range');
     finalItems.add('icicles');
     finalItems.add('sunglasses');
     finalItems.add('igloo');
+    finalItems.add('avalanche');
 
     renderSidebar();
     updateAchievementCount();
