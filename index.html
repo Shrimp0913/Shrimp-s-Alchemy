@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shrimp's Alchemy</title>
     <link rel="icon" type="image/svg+xml" href="icons/shrimp.svg">
+    <script>
+    (function() {
+        const link = document.querySelector('link[rel="icon"]');
+        if (!link) return;
+        const mql = window.matchMedia('(prefers-color-scheme: dark)');
+        mql.addEventListener('change', function() {
+            const href = link.href;
+            link.href = '';
+            requestAnimationFrame(function() { link.href = href; });
+        });
+    })();
+    </script>
     <link rel="stylesheet" href="css/inter.css">
     <link rel="stylesheet" href="css/fa-all.min.css">
     <link rel="stylesheet" href="css/fa-regular.min.css">
