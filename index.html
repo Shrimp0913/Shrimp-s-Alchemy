@@ -90,23 +90,25 @@
                     </div>
                     <div class="final-items-wrapper" id="final-items-wrapper">
                         <div class="final-items-collapsed" id="final-items-collapsed">
-                            <div class="achievement-box" style="margin-top: 16px;">
-                                <div class="achievement-count" id="final-count">0 / 0</div>
-                                <div class="achievement-label">Final Items</div>
-                            </div>
-                            <div class="final-items-bar" id="final-items-bar">
-                                <span>Expand Final Items</span>
-                                <i class="fas fa-chevron-up"></i>
+                            <div class="final-items-toggle" id="final-items-toggle">
+                                <div class="achievement-box">
+                                    <div class="achievement-count" id="final-count">0 / 0</div>
+                                    <div class="achievement-label">Final Items</div>
+                                </div>
+                                <div class="final-items-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
                             </div>
                         </div>
                         <div class="final-items-expanded hidden" id="final-items-expanded">
-                            <div class="final-items-bar" id="final-items-collapse-bar">
-                                <span>Collapse</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="achievement-box" style="margin-top: 12px;">
-                                <div class="achievement-count" id="final-count-expanded">0 / 0</div>
-                                <div class="achievement-label">Final Items</div>
+                            <div class="final-items-toggle" id="final-items-toggle-expanded">
+                                <div class="achievement-box">
+                                    <div class="achievement-count" id="final-count-expanded">0 / 0</div>
+                                    <div class="achievement-label">Final Items</div>
+                                </div>
+                                <div class="final-items-arrow">
+                                    <i class="fas fa-chevron-up"></i>
+                                </div>
                             </div>
                             <div class="final-items-layout">
                                 <div class="final-items-list" id="final-items-list"></div>
@@ -160,6 +162,6 @@
         </div>
     </div>
 
-    <script src="app.js?v=65"></script>
+    <script src="app.js?v=66"></script>
 </body>
 </html>

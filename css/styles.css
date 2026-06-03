@@ -375,7 +375,7 @@ body {
 /* Encyclopedia Modal */
 .modal-content {
     width: 520px;
-    max-height: 70vh;
+    max-height: 85vh;
     background: var(--bg-gray);
     border-radius: var(--radius-lg);
     display: flex;
@@ -713,6 +713,7 @@ body {
     display: flex;
     flex-direction: column;
     transition: all 0.35s ease;
+    margin-top: 16px;
 }
 
 .final-items-collapsed.hidden {
@@ -779,6 +780,38 @@ body {
     font-size: 12px;
     color: var(--text-gray);
     transition: transform 0.2s ease;
+}
+
+.final-items-toggle {
+    cursor: pointer;
+    user-select: none;
+}
+
+.final-items-toggle .achievement-box {
+    border-radius: var(--radius) var(--radius) 0 0;
+    transition: background 0.2s ease;
+    margin-bottom: 0;
+}
+
+.final-items-arrow {
+    width: 100%;
+    padding: 6px 16px;
+    background: var(--bg-light-gray);
+    border-radius: 0 0 var(--radius) var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--text-gray);
+    transition: background 0.2s ease;
+}
+
+.final-items-toggle:hover .final-items-arrow {
+    background: var(--bg-hover);
+}
+
+.final-items-toggle:hover .achievement-box {
+    background: var(--bg-hover);
 }
 
 .final-items-list {

@@ -426,9 +426,9 @@ function bindEvents() {
         });
     }
 
-    const finalItemsBar = document.getElementById('final-items-bar');
-    if (finalItemsBar) {
-        finalItemsBar.addEventListener('click', () => {
+    const finalItemsToggle = document.getElementById('final-items-toggle');
+    if (finalItemsToggle) {
+        finalItemsToggle.addEventListener('click', () => {
             const collapsed = document.getElementById('final-items-collapsed');
             const expanded = document.getElementById('final-items-expanded');
             if (collapsed) collapsed.classList.add('hidden');
@@ -436,9 +436,9 @@ function bindEvents() {
         });
     }
 
-    const finalItemsCollapseBar = document.getElementById('final-items-collapse-bar');
-    if (finalItemsCollapseBar) {
-        finalItemsCollapseBar.addEventListener('click', () => {
+    const finalItemsToggleExpanded = document.getElementById('final-items-toggle-expanded');
+    if (finalItemsToggleExpanded) {
+        finalItemsToggleExpanded.addEventListener('click', () => {
             const collapsed = document.getElementById('final-items-collapsed');
             const expanded = document.getElementById('final-items-expanded');
             if (collapsed) collapsed.classList.remove('hidden');
