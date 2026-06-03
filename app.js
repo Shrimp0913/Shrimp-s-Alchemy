@@ -539,7 +539,7 @@ function onMouseMove(e) {
         dragClone.style.top = ny + 'px';
     }
 
-    if (dragSource === 'canvas') {
+    if (dragSource === 'canvas' || dragSource === 'sidebar') {
         checkMergeHint(e.clientX, e.clientY);
     }
 }
@@ -671,6 +671,7 @@ function findMergeTargetAt(item, mouseX, mouseY) {
     const selfCx = selfRect.left + selfRect.width / 2;
     const selfCy = selfRect.top + selfRect.height / 2;
 
+    const threshold = Math.max(55, (selfRect.width + selfRect.height) / 3);
     for (const other of canvasItems) {
         if (other.uid === item.uid) continue;
         const otherEl = canvas.querySelector(`.canvas-element[data-uid="${other.uid}"]`);
@@ -679,7 +680,7 @@ function findMergeTargetAt(item, mouseX, mouseY) {
         const cx = r.left + r.width / 2;
         const cy = r.top + r.height / 2;
         const dist = Math.hypot(selfCx - cx, selfCy - cy);
-        if (dist < 62) return other;
+        if (dist < threshold) return other;
     }
     return null;
 }

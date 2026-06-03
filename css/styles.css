@@ -261,12 +261,12 @@ body {
 }
 
 .canvas-element .el-icon {
-    width: 76px;
-    height: 76px;
+    width: clamp(64px, 5vw, 110px);
+    height: clamp(64px, 5vw, 110px);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 56px;
+    font-size: clamp(48px, 3.7vw, 88px);
     color: var(--text-white);
     position: relative;
     z-index: 2;
@@ -277,10 +277,10 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 72px;
-    height: 72px;
-    margin-top: -36px;
-    margin-left: -36px;
+    width: clamp(60px, 4.7vw, 105px);
+    height: clamp(60px, 4.7vw, 105px);
+    margin-top: calc(clamp(60px, 4.7vw, 105px) / -2);
+    margin-left: calc(clamp(60px, 4.7vw, 105px) / -2);
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.15);
     animation: ripplePulse 1.2s ease-out infinite;
@@ -310,20 +310,20 @@ body {
 }
 
 .drag-clone-icon {
-    width: 76px;
-    height: 76px;
+    width: clamp(64px, 5vw, 110px);
+    height: clamp(64px, 5vw, 110px);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 56px;
+    font-size: clamp(48px, 3.7vw, 88px);
     color: var(--text-white);
 }
 
 /* Merge Hint Circle */
 .merge-hint {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: clamp(84px, 6.6vw, 145px);
+    height: clamp(84px, 6.6vw, 145px);
     border-radius: 50%;
     background: var(--bg-light-gray);
     pointer-events: none;
