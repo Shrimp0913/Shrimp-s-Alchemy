@@ -282,7 +282,7 @@ body {
     margin-top: calc(clamp(60px, 4.7vw, 105px) / -2);
     margin-left: calc(clamp(60px, 4.7vw, 105px) / -2);
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.55);
     animation: ripplePulse 0.6s ease-out infinite;
     pointer-events: none;
     z-index: 1;

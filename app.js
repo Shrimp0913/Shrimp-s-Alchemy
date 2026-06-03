@@ -560,6 +560,7 @@ function onMouseUp(e) {
             const target = findMergeTargetAt(newItem, e.clientX, e.clientY);
             if (target) attemptMerge(newItem, target);
         }
+        clearMergeHints();
         dragItem = null;
         dragClone = null;
         dragSource = null;
