@@ -713,7 +713,7 @@ body {
     display: flex;
     flex-direction: column;
     transition: all 0.35s ease;
-    margin-top: 16px;
+    margin-top: 24px;
 }
 
 .final-items-collapsed.hidden {
