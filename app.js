@@ -269,7 +269,7 @@ function renderCanvasItem(item, animate = false) {
     div.style.top = item.y + 'px';
     let html = `<div class="el-icon">${el.icon}</div>`;
     if (finalItems.has(item.elementId)) {
-        html += `<div class="ripple"></div><div class="ripple" style="animation-delay:0.8s"></div>`;
+        html += `<div class="ripple"></div><div class="ripple" style="animation-delay:-0.8s"></div>`;
     }
     div.innerHTML = html;
     canvas.appendChild(div);
