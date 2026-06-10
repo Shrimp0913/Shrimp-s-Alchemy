@@ -473,18 +473,18 @@ function onSidebarMouseDown(e) {
     dragSource = 'sidebar';
     dragItem = { elementId, uid: nextUid++ };
 
-    const CLONE_SIZE = 72;
-    dragOffset = { x: CLONE_SIZE / 2, y: CLONE_SIZE / 2 };
-
     dragClone = document.createElement('div');
     dragClone.className = 'drag-clone';
-    dragClone.style.left = (e.clientX - dragOffset.x) + 'px';
-    dragClone.style.top = (e.clientY - dragOffset.y) + 'px';
     dragClone.style.transition = 'transform 0.1s ease';
     dragClone.style.transform = 'scale(1.1)';
     const elData = elements[elementId];
     dragClone.innerHTML = `<div class="drag-clone-icon">${elData.icon}</div>`;
     document.body.appendChild(dragClone);
+
+    const cloneRect = dragClone.getBoundingClientRect();
+    dragOffset = { x: cloneRect.width / 2, y: cloneRect.height / 2 };
+    dragClone.style.left = (e.clientX - dragOffset.x) + 'px';
+    dragClone.style.top = (e.clientY - dragOffset.y) + 'px';
 }
 
 function onCanvasMouseDown(e) {
