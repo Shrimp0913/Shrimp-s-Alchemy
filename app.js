@@ -599,8 +599,13 @@ function onMouseUp(e) {
         dragClone.style.transition = 'all 0.2s cubic-bezier(0.25, 1, 0.5, 1)';
         dragClone.style.transform = 'scale(1)';
 
-        if (e.clientX >= sidebarRect.left && e.clientX <= sidebarRect.right &&
-            e.clientY >= sidebarRect.top && e.clientY <= sidebarRect.bottom) {
+        // Remove element if dropped outside canvas or on any sidebar
+        const isOutsideCanvas = e.clientX < canvasRect.left || e.clientX > canvasRect.right ||
+                                e.clientY < canvasRect.top || e.clientY > canvasRect.bottom;
+        const isOnRightSidebar = e.clientX >= sidebarRect.left && e.clientX <= sidebarRect.right &&
+                                 e.clientY >= sidebarRect.top && e.clientY <= sidebarRect.bottom;
+
+        if (isOutsideCanvas || isOnRightSidebar) {
             dragClone.style.transform = 'scale(0.5)';
             dragClone.style.opacity = '0';
             setTimeout(() => {
