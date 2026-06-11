@@ -40,7 +40,7 @@ const adminPasswordModal = document.getElementById('admin-password-modal');
 const adminPasswordInput = document.getElementById('admin-password-input');
 const searchBox = document.getElementById('search-box');
 
-const ADMIN_PASSWORD_HASH = 'a971e154f27418ad899aa269f4eec1b1b87cf22cf4d27ddfcf13c943b6ea8dba';
+const ADMIN_PASSWORD_HASH = '1b646461a9e3d9c6f18acca2f2e6243ac10a3a98bf578be3a54ee8addbfcd0a5';
 const itemsList = document.getElementById('items-list');
 const achievementCount = document.getElementById('achievement-count');
 
