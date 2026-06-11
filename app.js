@@ -40,7 +40,7 @@ const adminPasswordModal = document.getElementById('admin-password-modal');
 const adminPasswordInput = document.getElementById('admin-password-input');
 const searchBox = document.getElementById('search-box');
 
-const ADMIN_PASSWORD = '@1357642';
+const ADMIN_PASSWORD_HASH = 'a971e154f27418ad899aa269f4eec1b1b87cf22cf4d27ddfcf13c943b6ea8dba';
 const itemsList = document.getElementById('items-list');
 const achievementCount = document.getElementById('achievement-count');
 
@@ -1036,17 +1036,22 @@ function closeAdminPasswordModal() {
 
 function verifyAdminPassword() {
     if (!adminPasswordInput) return;
-    if (adminPasswordInput.value === ADMIN_PASSWORD) {
-        closeAdminPasswordModal();
-        toggleGodMode();
-    } else {
-        adminPasswordInput.classList.add('shake');
-        adminPasswordInput.value = '';
-        setTimeout(() => {
-            adminPasswordInput.classList.remove('shake');
-            adminPasswordInput.focus();
-        }, 350);
-    }
+    const input = adminPasswordInput.value;
+    crypto.subtle.digest('SHA-256', new TextEncoder().encode(input)).then(hashBuf => {
+        const hashArr = Array.from(new Uint8Array(hashBuf));
+        const hashHex = hashArr.map(b => b.toString(16).padStart(2, '0')).join('');
+        if (hashHex === ADMIN_PASSWORD_HASH) {
+            closeAdminPasswordModal();
+            toggleGodMode();
+        } else {
+            adminPasswordInput.classList.add('shake');
+            adminPasswordInput.value = '';
+            setTimeout(() => {
+                adminPasswordInput.classList.remove('shake');
+                adminPasswordInput.focus();
+            }, 350);
+        }
+    });
 }
 
 function showConfirmModal(action = 'clearCanvas') {
