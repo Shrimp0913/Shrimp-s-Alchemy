@@ -255,6 +255,7 @@ function init() {
     finalItems.add('sunglasses');
     finalItems.add('igloo');
     finalItems.add('avalanche');
+    finalItems.add('crystal-ball');
 
     renderSidebar();
     updateAchievementCount();
