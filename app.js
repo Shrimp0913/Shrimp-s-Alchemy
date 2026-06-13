@@ -82,7 +82,7 @@ function init() {
     elements['lightbulb'] = { id: 'lightbulb', name: 'lightbulb', icon: '<i class="fas fa-lightbulb"></i>', discovered: false };
     elements['airplane'] = { id: 'airplane', name: 'airplane', icon: '<i class="fas fa-plane"></i>', discovered: false };
     elements['magnet'] = { id: 'magnet', name: 'magnet', icon: '<i class="fas fa-magnet"></i>', discovered: false };
-    elements['blade'] = { id: 'blade', name: 'blade', icon: '<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 19l15 -15l3 3l-6 6l2 2a14 14 0 0 1 -14 4"/></svg>', discovered: false };
+    elements['blade'] = { id: 'blade', name: 'blade', icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" style="display:block;width:1.2em;height:1.2em;"><path fill="currentColor" d="M489.8 102.4L70.8 521.4C58.3 533.9 58.3 554.2 70.8 566.7L73.5 569.4C86 581.9 106.3 581.9 118.8 569.4L288.2 400L318.3 430.1C337 448.8 367.4 448.8 386.2 430.1L534.6 281.6C584.1 232.1 584.1 151.9 534.6 102.4C522.2 90 502.2 90 489.8 102.4z"/></svg>', discovered: false };
     elements['sun'] = { id: 'sun', name: 'sun', icon: '<i class="fas fa-sun"></i>', discovered: false };
     elements['mountain-sun'] = { id: 'mountain-sun', name: 'mountain-sun', icon: '<i class="fas fa-mountain-sun"></i>', discovered: false };
     elements['moon'] = { id: 'moon', name: 'moon', icon: '<i class="fas fa-moon"></i>', discovered: false };
