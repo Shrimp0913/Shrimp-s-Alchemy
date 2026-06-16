@@ -40,7 +40,7 @@ const adminPasswordModal = document.getElementById('admin-password-modal');
 const adminPasswordInput = document.getElementById('admin-password-input');
 const searchBox = document.getElementById('search-box');
 
-const ADMIN_PASSWORD_HASH = '51c8a5cd70be0f206baf427e9f15a476dbc7144eef535ed9e24aa1b420bb8da1';
+const ADMIN_PASSWORD_HASH = '5f1ba4f1f23a1f41679f2bd426f76f13001feac2e550665ae6ba37ce0a1b7ec1';
 const ADMIN_PASSWORD_SALT = 'ShrimpAlchemy2024!';
 const ADMIN_PASSWORD_ITERATIONS = 100;
 const itemsList = document.getElementById('items-list');
