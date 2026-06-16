@@ -40,7 +40,9 @@ const adminPasswordModal = document.getElementById('admin-password-modal');
 const adminPasswordInput = document.getElementById('admin-password-input');
 const searchBox = document.getElementById('search-box');
 
-const ADMIN_PASSWORD_HASH = '1b646461a9e3d9c6f18acca2f2e6243ac10a3a98bf578be3a54ee8addbfcd0a5';
+const ADMIN_PASSWORD_HASH = '51c8a5cd70be0f206baf427e9f15a476dbc7144eef535ed9e24aa1b420bb8da1';
+const ADMIN_PASSWORD_SALT = 'ShrimpAlchemy2024!';
+const ADMIN_PASSWORD_ITERATIONS = 100;
 const itemsList = document.getElementById('items-list');
 const achievementCount = document.getElementById('achievement-count');
 
@@ -1081,20 +1083,26 @@ function closeAdminPasswordModal() {
 function verifyAdminPassword() {
     if (!adminPasswordInput) return;
     const input = adminPasswordInput.value;
-    crypto.subtle.digest('SHA-256', new TextEncoder().encode(input)).then(hashBuf => {
-        const hashArr = Array.from(new Uint8Array(hashBuf));
-        const hashHex = hashArr.map(b => b.toString(16).padStart(2, '0')).join('');
-        if (hashHex === ADMIN_PASSWORD_HASH) {
-            closeAdminPasswordModal();
-            toggleGodMode();
-        } else {
-            adminPasswordInput.classList.add('shake');
-            adminPasswordInput.value = '';
-            setTimeout(() => {
-                adminPasswordInput.classList.remove('shake');
-                adminPasswordInput.focus();
-            }, 350);
-        }
+    crypto.subtle.digest('SHA-256', new TextEncoder().encode(ADMIN_PASSWORD_SALT + input)).then(hashBuf => {
+        (function iterate(count, buf) {
+            if (count <= 0) {
+                const hashArr = Array.from(new Uint8Array(buf));
+                const hashHex = hashArr.map(b => b.toString(16).padStart(2, '0')).join('');
+                if (hashHex === ADMIN_PASSWORD_HASH) {
+                    closeAdminPasswordModal();
+                    toggleGodMode();
+                } else {
+                    adminPasswordInput.classList.add('shake');
+                    adminPasswordInput.value = '';
+                    setTimeout(() => {
+                        adminPasswordInput.classList.remove('shake');
+                        adminPasswordInput.focus();
+                    }, 350);
+                }
+            } else {
+                crypto.subtle.digest('SHA-256', buf).then(nextBuf => iterate(count - 1, nextBuf));
+            }
+        })(ADMIN_PASSWORD_ITERATIONS, hashBuf);
     });
 }
 
