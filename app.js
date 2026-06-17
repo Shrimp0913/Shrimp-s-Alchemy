@@ -206,9 +206,16 @@ const SETTINGS_KEY = 'shrimpAlchemy_settings';
 
 function saveProgress() {
     try {
+        // If in admin mode, save snapshot data instead of current state
+        const unlockedToSave = godMode && godModeSnapshot
+            ? Array.from(godModeSnapshot.unlocked)
+            : Array.from(unlocked);
+        const recipesToSave = godMode && godModeSnapshot
+            ? Array.from(godModeSnapshot.discoveredRecipes)
+            : Array.from(discoveredRecipes);
         const data = {
-            unlocked: Array.from(unlocked),
-            discoveredRecipes: Array.from(discoveredRecipes),
+            unlocked: unlockedToSave,
+            discoveredRecipes: recipesToSave,
             version: GAME_VERSION,
             settings: settings
         };
@@ -277,18 +284,21 @@ function loadProgress() {
 // ==========================================
 
 const THEMES = [
-    { id: 'default', name: 'Default', darkAccent: '#ffffff', darkText: '#d0d0d0', lightAccent: '#ffffff', lightText: '#f0f0f0', glass: '#2a2a2a' },
-    { id: 'blue', name: 'Blue', darkAccent: '#5a80b0', darkText: '#90b0d0', lightAccent: '#88b0e8', lightText: '#b8d0f0', glass: '#2a2a2a' },
-    { id: 'yellow', name: 'Yellow', darkAccent: '#989048', darkText: '#c8c080', lightAccent: '#c8c070', lightText: '#e0d8a0', glass: '#2a2a2a' },
-    { id: 'pink', name: 'Pink', darkAccent: '#a07080', darkText: '#c8a0b0', lightAccent: '#d8a0b8', lightText: '#f0c8d8', glass: '#2a2a2a' },
-    { id: 'green', name: 'Green', darkAccent: '#708048', darkText: '#a0b880', lightAccent: '#98c868', lightText: '#c0e8a0', glass: '#2a2a2a' },
-    { id: 'purple', name: 'Purple', darkAccent: '#8068a0', darkText: '#b0a0c8', lightAccent: '#b8a0e0', lightText: '#d8d0f8', glass: '#2a2a2a' },
+    { id: 'default', name: 'Default', darkAccent: '#ffffff', darkText: '#d0d0d0', lightAccent: '#1a1a1a', lightText: '#333333', glass: '#2a2a2a' },
+    { id: 'blue', name: 'Blue', darkAccent: '#5a80b0', darkText: '#90b0d0', lightAccent: '#3a6080', lightText: '#506880', glass: '#2a2a2a' },
+    { id: 'orange', name: 'Orange', darkAccent: '#b08050', darkText: '#d0b080', lightAccent: '#805830', lightText: '#a08060', glass: '#2a2a2a' },
+    { id: 'red', name: 'Red', darkAccent: '#a06060', darkText: '#c09090', lightAccent: '#804040', lightText: '#905050', glass: '#2a2a2a' },
+    { id: 'slate', name: 'Slate', darkAccent: '#708090', darkText: '#a0b0c0', lightAccent: '#506070', lightText: '#607080', glass: '#2a2a2a' },
+    { id: 'pink', name: 'Pink', darkAccent: '#a07080', darkText: '#c8a0b0', lightAccent: '#805060', lightText: '#906070', glass: '#2a2a2a' },
+    { id: 'green', name: 'Green', darkAccent: '#708058', darkText: '#a0b880', lightAccent: '#506840', lightText: '#607850', glass: '#2a2a2a' },
+    { id: 'purple', name: 'Purple', darkAccent: '#805878', darkText: '#c0a0b0', lightAccent: '#704060', lightText: '#805070', glass: '#2a2a2a' },
 ];
 
 function applyTheme() {
     const themeId = settings.theme || 'default';
     const mode = settings.mode || 'dark';
     document.body.setAttribute('data-theme', themeId === 'default' ? '' : themeId);
+    document.body.setAttribute('data-mode', mode);
 
     const theme = THEMES.find(t => t.id === themeId);
     if (theme) {
