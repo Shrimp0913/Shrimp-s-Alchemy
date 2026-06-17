@@ -38,9 +38,9 @@
 }
 
 [data-theme="red"] {
-    --text-gray: #a05050;
-    --text-light: #c07070;
-    --theme-accent: #a04040;
+    --text-gray: #906060;
+    --text-light: #a08080;
+    --theme-accent: #7a4848;
 }
 
 [data-theme="slate"] {
