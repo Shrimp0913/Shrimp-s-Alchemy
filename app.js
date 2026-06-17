@@ -24,7 +24,7 @@ let canvasItems = [];
 let normalCanvasItems = [];
 let adminCanvasItems = [];
 let nextUid = 1;
-let settings = { theme: 'default' };
+let settings = { theme: 'default', mode: 'dark' };
 
 let dragItem = null;
 let dragOffset = { x: 0, y: 0 };
@@ -277,17 +277,29 @@ function loadProgress() {
 // ==========================================
 
 const THEMES = [
-    { id: 'default', name: 'Default', accent: '#ffffff', text: '#d0d0d0', glass: '#2a2a2a' },
-    { id: 'blue', name: 'Blue', accent: '#7aa8d0', text: '#c8dae8', glass: '#2a2a2a' },
-    { id: 'yellow', name: 'Yellow', accent: '#c8b860', text: '#e8dcb0', glass: '#2a2a2a' },
-    { id: 'pink', name: 'Pink', accent: '#c888a0', text: '#e8c8d0', glass: '#2a2a2a' },
-    { id: 'green', name: 'Green', accent: '#78b090', text: '#b8dcc0', glass: '#2a2a2a' },
-    { id: 'purple', name: 'Purple', accent: '#a090c8', text: '#d0c8e0', glass: '#2a2a2a' },
+    { id: 'default', name: 'Default', darkAccent: '#ffffff', darkText: '#d0d0d0', lightAccent: '#ffffff', lightText: '#f0f0f0', glass: '#2a2a2a' },
+    { id: 'blue', name: 'Blue', darkAccent: '#5a80b0', darkText: '#90b0d0', lightAccent: '#88b0e8', lightText: '#b8d0f0', glass: '#2a2a2a' },
+    { id: 'yellow', name: 'Yellow', darkAccent: '#989048', darkText: '#c8c080', lightAccent: '#c8c070', lightText: '#e0d8a0', glass: '#2a2a2a' },
+    { id: 'pink', name: 'Pink', darkAccent: '#a07080', darkText: '#c8a0b0', lightAccent: '#d8a0b8', lightText: '#f0c8d8', glass: '#2a2a2a' },
+    { id: 'green', name: 'Green', darkAccent: '#708048', darkText: '#a0b880', lightAccent: '#98c868', lightText: '#c0e8a0', glass: '#2a2a2a' },
+    { id: 'purple', name: 'Purple', darkAccent: '#8068a0', darkText: '#b0a0c8', lightAccent: '#b8a0e0', lightText: '#d8d0f8', glass: '#2a2a2a' },
 ];
 
 function applyTheme() {
     const themeId = settings.theme || 'default';
+    const mode = settings.mode || 'dark';
     document.body.setAttribute('data-theme', themeId === 'default' ? '' : themeId);
+
+    const theme = THEMES.find(t => t.id === themeId);
+    if (theme) {
+        const accent = mode === 'light' ? theme.lightAccent : theme.darkAccent;
+        const text = mode === 'light' ? theme.lightText : theme.darkText;
+        document.documentElement.style.setProperty('--theme-accent', accent);
+        document.documentElement.style.setProperty('--text-white', text);
+    } else {
+        document.documentElement.style.removeProperty('--theme-accent');
+        document.documentElement.style.removeProperty('--text-white');
+    }
 }
 
 function selectTheme(themeId) {
@@ -297,22 +309,38 @@ function selectTheme(themeId) {
     renderThemeGrid();
 }
 
+function selectMode(mode) {
+    settings.mode = mode;
+    applyTheme();
+    saveProgress();
+    renderThemeGrid();
+    updateModeToggle();
+}
+
+function updateModeToggle() {
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === settings.mode);
+    });
+}
+
 function renderThemeGrid() {
     const grid = document.getElementById('theme-grid');
     if (!grid) return;
     grid.innerHTML = '';
+    const mode = settings.mode || 'dark';
     THEMES.forEach(theme => {
+        const accent = mode === 'light' ? theme.lightAccent : theme.darkAccent;
+        const text = mode === 'light' ? theme.lightText : theme.darkText;
         const option = document.createElement('div');
         option.className = 'theme-option' + (settings.theme === theme.id ? ' selected' : '');
         option.dataset.theme = theme.id;
         option.innerHTML = `
             <div class="theme-preview">
-                <div class="theme-preview-top" style="background:${theme.accent}"></div>
-                <div class="theme-preview-bottom-left" style="background:${theme.text}"></div>
+                <div class="theme-preview-top" style="background:${accent}"></div>
+                <div class="theme-preview-bottom-left" style="background:${text}"></div>
                 <div class="theme-preview-bottom-right" style="background:${theme.glass}"></div>
                 <div class="theme-check"><i class="fas fa-check"></i></div>
             </div>
-            <span class="theme-name">${theme.name}</span>
         `;
         option.addEventListener('click', () => selectTheme(theme.id));
         grid.appendChild(option);
@@ -326,6 +354,7 @@ function renderThemeGrid() {
 function openSettings() {
     const modal = document.getElementById('settings-modal');
     if (!modal) return;
+    updateModeToggle();
     renderThemeGrid();
     modal.classList.remove('hidden');
 }
@@ -361,7 +390,7 @@ function resetGame() {
     discoveredRecipes.clear();
 
     // Reset settings
-    settings = { theme: 'default' };
+    settings = { theme: 'default', mode: 'dark' };
     applyTheme();
 
     // Reset god mode
@@ -530,6 +559,10 @@ function bindEvents() {
             btn.classList.add('active');
             document.getElementById('section-' + btn.dataset.section)?.classList.add('active');
         });
+    });
+
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => selectMode(btn.dataset.mode));
     });
 
     const sidebarSearch = document.getElementById('sidebar-search');
