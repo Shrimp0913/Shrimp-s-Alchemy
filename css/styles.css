@@ -26,43 +26,43 @@
 }
 
 [data-theme="blue"] {
-    --text-white: #d0e6ff;
-    --text-gray: #5a8ab5;
-    --text-light: #7aadcc;
-    --theme-accent: #5aa8ff;
-    --theme-border: #2a4a6a;
+    --text-white: #c8dae8;
+    --text-gray: #6a8aaa;
+    --text-light: #8aa8c0;
+    --theme-accent: #7aa8d0;
+    --theme-border: #3a5a7a;
 }
 
 [data-theme="yellow"] {
-    --text-white: #f5e8b8;
-    --text-gray: #a09050;
-    --text-light: #c0b070;
-    --theme-accent: #e5c84b;
-    --theme-border: #4a4018;
+    --text-white: #e8dcb0;
+    --text-gray: #a09860;
+    --text-light: #b8b080;
+    --theme-accent: #c8b860;
+    --theme-border: #5a5020;
 }
 
 [data-theme="pink"] {
-    --text-white: #ffd0e0;
-    --text-gray: #a07088;
-    --text-light: #c090a8;
-    --theme-accent: #e87ea1;
-    --theme-border: #4a2a38;
+    --text-white: #e8c8d0;
+    --text-gray: #a08090;
+    --text-light: #b8a0a8;
+    --theme-accent: #c888a0;
+    --theme-border: #5a3a48;
 }
 
 [data-theme="green"] {
-    --text-white: #c0f0cc;
-    --text-gray: #5a9068;
-    --text-light: #78b888;
-    --theme-accent: #5ec376;
-    --theme-border: #1a4a2a;
+    --text-white: #b8dcc0;
+    --text-gray: #6a9078;
+    --text-light: #88b098;
+    --theme-accent: #78b090;
+    --theme-border: #2a5a3a;
 }
 
 [data-theme="purple"] {
-    --text-white: #ddd0f0;
-    --text-gray: #7a6a9a;
-    --text-light: #9688b0;
-    --theme-accent: #a07ce8;
-    --theme-border: #3a2460;
+    --text-white: #d0c8e0;
+    --text-gray: #8a80a0;
+    --text-light: #a098b8;
+    --theme-accent: #a090c8;
+    --theme-border: #4a3a68;
 }
 
 body {
@@ -1190,7 +1190,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px 0;
-    gap: 4px;
+    gap: 2px;
     flex-shrink: 0;
 }
 
@@ -1208,8 +1208,8 @@ body {
     transition: color 0.2s ease, background 0.2s ease;
     font-family: 'Inter', system-ui, sans-serif;
     text-align: left;
-    border-radius: 0 8px 8px 0;
-    margin-right: 8px;
+    border-radius: 8px;
+    margin: 0 10px;
 }
 
 .settings-nav-btn i {
@@ -1248,16 +1248,16 @@ body {
 }
 
 .settings-section-title {
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--text-white);
-    margin: 0 0 4px 0;
+    margin: 0;
 }
 
 .settings-section-desc {
     font-size: 12px;
     color: var(--text-gray);
-    margin-bottom: 8px;
+    margin: 4px 0 0 0;
 }
 
 /* Theme preview circles */
@@ -1342,16 +1342,14 @@ body {
 }
 
 .theme-name {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-light);
-    text-align: center;
+    display: none;
 }
 
 /* Reset game section */
 .reset-section {
     align-items: flex-start;
     gap: 16px;
+    margin-top: 12px;
 }
 
 .reset-warning {
