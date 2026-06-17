@@ -463,7 +463,7 @@ function renderSidebar() {
         groups[letter].forEach(id => {
             const el = elements[id];
             const div = document.createElement('div');
-            div.className = 'sidebar-element' + (godMode && finalItems.has(id) ? ' admin-final-item' : '');
+            div.className = 'sidebar-element' + (finalItems.has(id) ? ' final-item' : '') + (godMode && finalItems.has(id) ? ' admin-final-item' : '');
             div.dataset.id = id;
             div.draggable = false;
             div.innerHTML = `<div class="el-icon">${el.icon}</div><div class="el-name">${el.name}</div>`;
@@ -478,7 +478,7 @@ function renderSidebar() {
 function renderCanvasItem(item, animate = false) {
     const el = elements[item.elementId];
     const div = document.createElement('div');
-    div.className = 'canvas-element' + (godMode && finalItems.has(item.elementId) ? ' admin-final-item' : '');
+    div.className = 'canvas-element' + (finalItems.has(item.elementId) ? ' final-item' : '') + (godMode && finalItems.has(item.elementId) ? ' admin-final-item' : '');
     div.dataset.uid = item.uid;
     div.style.left = item.x + 'px';
     div.style.top = item.y + 'px';
@@ -719,7 +719,7 @@ function onSidebarMouseDown(e) {
     dragItem = { elementId, uid: nextUid++ };
 
     dragClone = document.createElement('div');
-    dragClone.className = 'drag-clone';
+    dragClone.className = 'drag-clone' + (finalItems.has(elementId) ? ' final-item' : '');
     dragClone.style.transition = 'transform 0.1s ease';
     dragClone.style.transform = 'scale(1.1)';
     const elData = elements[elementId];

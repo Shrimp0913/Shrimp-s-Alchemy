@@ -14,7 +14,7 @@
     --text-gray: #888888;
     --text-light: #aaaaaa;
     --theme-accent: #ffffff;
-    --theme-border: #6a6a6a;
+    --theme-border: rgba(255, 255, 255, 0.15);
     --radius: 12px;
     --radius-sm: 8px;
     --radius-lg: 16px;
@@ -29,49 +29,42 @@
     --text-gray: #6a8aaa;
     --text-light: #8aa8c0;
     --theme-accent: #5a80b0;
-    --theme-border: #5a7a9a;
 }
 
 [data-theme="orange"] {
     --text-gray: #a08060;
     --text-light: #c0a080;
     --theme-accent: #b08050;
-    --theme-border: #8a7040;
 }
 
 [data-theme="red"] {
     --text-gray: #a05050;
     --text-light: #c07070;
     --theme-accent: #a04040;
-    --theme-border: #8a5050;
 }
 
 [data-theme="slate"] {
     --text-gray: #708090;
     --text-light: #90a0b0;
     --theme-accent: #708090;
-    --theme-border: #708090;
 }
 
 [data-theme="pink"] {
     --text-gray: #a08090;
     --text-light: #c0a0b0;
     --theme-accent: #a07080;
-    --theme-border: #7a5a68;
 }
 
 [data-theme="green"] {
     --text-gray: #6a8060;
     --text-light: #88a078;
     --theme-accent: #708058;
-    --theme-border: #5a7a50;
 }
 
 [data-theme="purple"] {
     --text-gray: #8a7080;
     --text-light: #a890a0;
     --theme-accent: #805878;
-    --theme-border: #705060;
 }
 
 /* Light mode */
@@ -84,7 +77,7 @@
     --text-gray: #666666;
     --text-light: #888888;
     --text-white: #333333;
-    --theme-border: #cccccc;
+    --theme-border: rgba(0, 0, 0, 0.12);
 }
 
 [data-mode="light"] .sidebar-btn i,
@@ -177,17 +170,23 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .admin-active .sidebar-
     color: #1a1a1a;
 }
 
-/* Canvas admin final item colors */
-.canvas-element.admin-final-item .el-icon {
+/* Final item colors - yellow by default, theme-colored in admin mode */
+.canvas-element.final-item .el-icon,
+.canvas-element.final-item .ripple {
     color: #fbbf24;
+    border-color: #fbbf24;
 }
 
-body[data-theme]:not([data-theme=""]) .canvas-element.admin-final-item .el-icon {
+body[data-theme]:not([data-theme=""]) .canvas-element.final-item .el-icon,
+body[data-theme]:not([data-theme=""]) .canvas-element.final-item .ripple {
     color: #ffffff;
+    border-color: #ffffff;
 }
 
-body[data-mode="light"][data-theme]:not([data-theme=""]) .canvas-element.admin-final-item .el-icon {
+body[data-mode="light"][data-theme]:not([data-theme=""]) .canvas-element.final-item .el-icon,
+body[data-mode="light"][data-theme]:not([data-theme=""]) .canvas-element.final-item .ripple {
     color: #1a1a1a;
+    border-color: #1a1a1a;
 }
 
 body {
@@ -392,18 +391,18 @@ body {
     cursor: grabbing;
 }
 
-.sidebar-element.admin-final-item .el-icon,
-.sidebar-element.admin-final-item .el-name {
+.sidebar-element.final-item .el-icon,
+.sidebar-element.final-item .el-name {
     color: #fbbf24;
 }
 
-body[data-theme]:not([data-theme=""]) .sidebar-element.admin-final-item .el-icon,
-body[data-theme]:not([data-theme=""]) .sidebar-element.admin-final-item .el-name {
+body[data-theme]:not([data-theme=""]) .sidebar-element.final-item .el-icon,
+body[data-theme]:not([data-theme=""]) .sidebar-element.final-item .el-name {
     color: #ffffff;
 }
 
-body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-final-item .el-icon,
-body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-final-item .el-name {
+body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.final-item .el-icon,
+body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.final-item .el-name {
     color: #1a1a1a;
 }
 
@@ -416,18 +415,6 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-
     font-size: 16px;
     color: var(--theme-accent);
     flex-shrink: 0;
-}
-
-.sidebar-element.admin-final-item .el-icon {
-    color: #fbbf24;
-}
-
-body[data-theme]:not([data-theme=""]) .sidebar-element.admin-final-item .el-icon {
-    color: #ffffff;
-}
-
-body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-final-item .el-icon {
-    color: #1a1a1a;
 }
 
 .sidebar-element .el-name {
@@ -520,6 +507,18 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-
     justify-content: center;
     font-size: var(--el-icon-font);
     color: var(--theme-accent);
+}
+
+.drag-clone.final-item .drag-clone-icon {
+    color: #fbbf24;
+}
+
+body[data-theme]:not([data-theme=""]) .drag-clone.final-item .drag-clone-icon {
+    color: #ffffff;
+}
+
+body[data-mode="light"][data-theme]:not([data-theme=""]) .drag-clone.final-item .drag-clone-icon {
+    color: #1a1a1a;
 }
 
 /* Merge Hint Circle */
@@ -1207,7 +1206,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-
     flex-direction: column;
     align-items: center;
     gap: 24px;
-    border: 1px solid var(--bg-light-gray);
+    border: 1px solid var(--theme-border);
     text-align: center;
     min-width: 320px;
     max-width: 400px;
@@ -1259,14 +1258,14 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-
 .admin-password-input {
     width: 100%;
     background: var(--bg-light-gray);
-    border: none;
+    border: 1px solid var(--theme-border);
     border-radius: var(--radius-sm);
     padding: 10px 14px;
     color: var(--text-white);
     font-size: 13px;
     font-family: 'Inter', system-ui, sans-serif;
     outline: none;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, border-color 0.2s ease;
     text-align: center;
 }
 
