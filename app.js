@@ -478,7 +478,7 @@ function renderSidebar() {
 function renderCanvasItem(item, animate = false) {
     const el = elements[item.elementId];
     const div = document.createElement('div');
-    div.className = 'canvas-element';
+    div.className = 'canvas-element' + (godMode && finalItems.has(item.elementId) ? ' admin-final-item' : '');
     div.dataset.uid = item.uid;
     div.style.left = item.x + 'px';
     div.style.top = item.y + 'px';
