@@ -40,10 +40,10 @@
 }
 
 [data-theme="red"] {
-    --text-gray: #906060;
-    --text-light: #b08080;
-    --theme-accent: #a06060;
-    --theme-border: #6a3a3a;
+    --text-gray: #a05050;
+    --text-light: #c07070;
+    --theme-accent: #c04040;
+    --theme-border: #7a3030;
 }
 
 [data-theme="slate"] {
@@ -110,48 +110,26 @@
     justify-content: center;
     gap: 8px;
     padding: 10px 16px;
+    background: var(--bg-light-gray);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-gray);
     cursor: pointer;
     font-size: 13px;
     font-weight: 500;
     font-family: 'Inter', system-ui, sans-serif;
-    border-radius: var(--radius-sm);
     transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-/* Light mode button — always light appearance */
-.mode-btn[data-mode="light"] {
-    background: #eaeaea;
-    border: 1px solid #cccccc;
-    color: #666666;
+.mode-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-light);
 }
 
-.mode-btn[data-mode="light"]:hover {
-    background: #e0e0e0;
-    color: #555555;
-}
-
-.mode-btn[data-mode="light"].active {
-    background: #e0e0e0;
+.mode-btn.active {
+    background: var(--bg-hover);
     border-color: var(--theme-accent);
-    color: #333333;
-}
-
-/* Dark mode button — always dark appearance */
-.mode-btn[data-mode="dark"] {
-    background: #2a2a2a;
-    border: 1px solid #555555;
-    color: #888888;
-}
-
-.mode-btn[data-mode="dark"]:hover {
-    background: #383838;
-    color: #aaaaaa;
-}
-
-.mode-btn[data-mode="dark"].active {
-    background: #383838;
-    border-color: var(--theme-accent);
-    color: #ffffff;
+    color: var(--text-white);
 }
 
 .mode-icon {
@@ -270,6 +248,11 @@ body {
     align-items: center;
     justify-content: center;
     color: var(--theme-accent);
+}
+
+#btn-settings .sidebar-btn-icon {
+    width: 26px;
+    height: 26px;
 }
 
 .sidebar-btn:hover {
@@ -1362,8 +1345,8 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-
     border-right: 1px solid var(--theme-border);
     display: flex;
     flex-direction: column;
-    padding: 20px 0;
-    gap: 4px;
+    padding: 20px 14px;
+    gap: 8px;
     flex-shrink: 0;
 }
 
@@ -1372,7 +1355,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-
     border: 1.5px solid transparent;
     color: var(--text-gray);
     cursor: pointer;
-    padding: 12px 20px;
+    padding: 12px 16px;
     font-size: 13px;
     font-weight: 500;
     display: flex;
@@ -1382,7 +1365,8 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-
     font-family: 'Inter', system-ui, sans-serif;
     text-align: left;
     border-radius: var(--radius-sm);
-    margin: 3px 12px;
+    margin: 0;
+    width: 100%;
 }
 
 .settings-nav-btn i {
@@ -1409,6 +1393,11 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-
 
 [data-mode="light"] .settings-nav-btn.active {
     background: rgba(0,0,0,0.06);
+}
+
+[data-mode="light"] .settings-nav {
+    background: var(--bg-black);
+    border-right-color: var(--theme-border);
 }
 
 .settings-body {
