@@ -43,6 +43,7 @@ const searchBox = document.getElementById('search-box');
 const ADMIN_PASSWORD_HASH = '5f1ba4f1f23a1f41679f2bd426f76f13001feac2e550665ae6ba37ce0a1b7ec1';
 const ADMIN_PASSWORD_SALT = 'ShrimpAlchemy2024!';
 const ADMIN_PASSWORD_ITERATIONS = 100;
+const GAME_VERSION = '1.4';
 const itemsList = document.getElementById('items-list');
 const achievementCount = document.getElementById('achievement-count');
 
@@ -179,6 +180,9 @@ function init() {
     renderSidebar();
     updateAchievementCount();
     bindEvents();
+
+    // Load saved progress
+    loadProgress();
 }
 
 function _addRecipe(a, b, result) {
@@ -187,6 +191,120 @@ function _addRecipe(a, b, result) {
     if (!resultToSources[result]) resultToSources[result] = [];
     resultToSources[result].push([a, b]);
 }
+
+// ==========================================
+// Local Storage - Save/Load Progress
+// ==========================================
+
+const SAVE_KEY = 'shrimpAlchemy_save';
+const VERSION_KEY = 'shrimpAlchemy_version';
+
+function saveProgress() {
+    try {
+        const data = {
+            unlocked: Array.from(unlocked),
+            discoveredRecipes: Array.from(discoveredRecipes),
+            version: GAME_VERSION
+        };
+        localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+    } catch (e) {
+        // localStorage may be unavailable (e.g. private browsing)
+    }
+}
+
+function loadProgress() {
+    try {
+        const savedVersion = localStorage.getItem(VERSION_KEY);
+        const saved = localStorage.getItem(SAVE_KEY);
+
+        if (!saved) {
+            // First visit - save current state
+            saveProgress();
+            localStorage.setItem(VERSION_KEY, GAME_VERSION);
+            return;
+        }
+
+        const data = JSON.parse(saved);
+
+        // Restore unlocked elements
+        if (data.unlocked && Array.isArray(data.unlocked)) {
+            data.unlocked.forEach(id => {
+                unlocked.add(id);
+                if (elements[id]) {
+                    elements[id].discovered = true;
+                }
+            });
+        }
+
+        // Restore discovered recipes
+        if (data.discoveredRecipes && Array.isArray(data.discoveredRecipes)) {
+            data.discoveredRecipes.forEach(key => {
+                discoveredRecipes.add(key);
+            });
+        }
+
+        // If game was updated (version changed), clear canvas but keep progress
+        if (savedVersion && savedVersion !== GAME_VERSION) {
+            // Version mismatch - canvas already cleared on fresh page load
+            // Progress is preserved above, just update the version
+            localStorage.setItem(VERSION_KEY, GAME_VERSION);
+        } else if (!savedVersion) {
+            localStorage.setItem(VERSION_KEY, GAME_VERSION);
+        }
+
+        // Re-render sidebar with restored progress
+        renderSidebar();
+        updateAchievementCount();
+    } catch (e) {
+        // Corrupted save data - start fresh
+    }
+}
+
+function resetGame() {
+    try {
+        localStorage.removeItem(SAVE_KEY);
+        localStorage.removeItem(VERSION_KEY);
+    } catch (e) {}
+
+    // Reset all element discovered states
+    Object.keys(elements).forEach(id => {
+        elements[id].discovered = false;
+    });
+
+    // Reset base elements to discovered
+    BASE_ELEMENTS.forEach(el => {
+        elements[el.id].discovered = true;
+    });
+
+    // Reset unlocked set
+    unlocked.clear();
+    BASE_ELEMENTS.forEach(el => {
+        unlocked.add(el.id);
+    });
+
+    // Reset discovered recipes
+    discoveredRecipes.clear();
+
+    // Reset god mode
+    if (godMode) {
+        godMode = false;
+        godModeSnapshot = null;
+        document.getElementById('btn-admin')?.classList.remove('admin-active');
+    }
+
+    // Clear canvas
+    clearCanvas();
+
+    // Re-render
+    renderSidebar();
+    updateAchievementCount();
+
+    // Save fresh state
+    saveProgress();
+}
+
+// Expose resetGame for settings UI
+window.resetGame = resetGame;
 
 function renderSidebar() {
     const sidebarSearch = document.getElementById('sidebar-search');
@@ -747,6 +865,7 @@ function attemptMerge(a, b) {
         createCanvasElement(resultId, rx, ry, true);
 
         if (isNewItem || isNewRecipe) {
+            saveProgress();
             setTimeout(() => showDiscoveryModal(resultId, a.elementId, b.elementId), 300);
         }
     }, 400);
@@ -1078,6 +1197,7 @@ function toggleGodMode() {
     renderCanvas();
     renderSidebar();
     updateAchievementCount();
+    saveProgress();
 }
 
 window.addElement = function(id, name, iconHtml) {
