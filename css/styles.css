@@ -128,8 +128,9 @@
 
 .mode-btn.active {
     background: var(--bg-hover);
-    border-color: var(--theme-accent);
+    border-color: var(--theme-border);
     color: var(--text-white);
+    font-weight: 600;
 }
 
 .mode-icon {
@@ -1450,7 +1451,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.admin-
 }
 
 .theme-option.selected {
-    border-color: var(--theme-accent);
+    border-color: var(--theme-border);
     background: rgba(255,255,255,0.05);
 }
 
