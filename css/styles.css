@@ -13,6 +13,8 @@
     --text-white: #ffffff;
     --text-gray: #888888;
     --text-light: #aaaaaa;
+    --theme-accent: #ffffff;
+    --theme-border: #333333;
     --radius: 12px;
     --radius-sm: 8px;
     --radius-lg: 16px;
@@ -21,6 +23,61 @@
     --el-icon-size: clamp(68px, 5.3vw, 108px);
     --el-icon-font: clamp(60px, 4.7vw, 98px);
     --merge-hint-size: clamp(88px, 6.8vw, 138px);
+}
+
+[data-theme="blue"] {
+    --bg-gray: #0f1e33;
+    --bg-light-gray: #1a2d4a;
+    --bg-hover: #1e3a5a;
+    --text-white: #d0e6ff;
+    --text-gray: #5a8ab5;
+    --text-light: #7aadcc;
+    --theme-accent: #5aa8ff;
+    --theme-border: #2a4a6a;
+}
+
+[data-theme="yellow"] {
+    --bg-gray: #2a250e;
+    --bg-light-gray: #3a3518;
+    --bg-hover: #4a4020;
+    --text-white: #f5e8b8;
+    --text-gray: #a09050;
+    --text-light: #c0b070;
+    --theme-accent: #e5c84b;
+    --theme-border: #4a4018;
+}
+
+[data-theme="pink"] {
+    --bg-gray: #2a1520;
+    --bg-light-gray: #3a2028;
+    --bg-hover: #4a2a38;
+    --text-white: #ffd0e0;
+    --text-gray: #a07088;
+    --text-light: #c090a8;
+    --theme-accent: #e87ea1;
+    --theme-border: #4a2a38;
+}
+
+[data-theme="green"] {
+    --bg-gray: #0d2a18;
+    --bg-light-gray: #163a24;
+    --bg-hover: #1e4a30;
+    --text-white: #c0f0cc;
+    --text-gray: #5a9068;
+    --text-light: #78b888;
+    --theme-accent: #5ec376;
+    --theme-border: #1a4a2a;
+}
+
+[data-theme="purple"] {
+    --bg-gray: #1a0d2a;
+    --bg-light-gray: #241638;
+    --bg-hover: #301e48;
+    --text-white: #ddd0f0;
+    --text-gray: #7a6a9a;
+    --text-light: #9688b0;
+    --theme-accent: #a07ce8;
+    --theme-border: #3a2460;
 }
 
 body {
@@ -47,7 +104,7 @@ body {
     padding: 32px 0;
     gap: 28px;
     z-index: 100;
-    border: 1px solid var(--bg-light-gray);
+    border: 1px solid var(--theme-border);
     border-radius: var(--radius);
 }
 
@@ -72,7 +129,7 @@ body {
 
 .sidebar-btn i {
     font-size: 22px;
-    color: var(--text-white);
+    color: var(--theme-accent);
 }
 
 .sidebar-btn:hover {
@@ -112,7 +169,7 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0 0 12px 0;
-    border: 1px solid var(--bg-light-gray);
+    border: 1px solid var(--theme-border);
     border-radius: var(--radius);
 }
 
@@ -223,7 +280,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    color: var(--text-white);
+    color: var(--theme-accent);
     flex-shrink: 0;
 }
 
@@ -270,7 +327,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: var(--el-icon-font);
-    color: var(--text-white);
+    color: var(--theme-accent);
     position: relative;
     z-index: 2;
 }
@@ -285,7 +342,8 @@ body {
     margin-top: calc(var(--el-icon-size) / -2);
     margin-left: calc(var(--el-icon-size) / -2);
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    border: 2px solid var(--theme-accent);
+    opacity: 0.25;
     animation: ripplePulse 1.6s ease-out infinite;
     pointer-events: none;
     z-index: 1;
@@ -319,7 +377,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: var(--el-icon-font);
-    color: var(--text-white);
+    color: var(--theme-accent);
 }
 
 /* Merge Hint Circle */
@@ -385,12 +443,12 @@ body {
     flex-direction: column;
     overflow: hidden;
     position: relative;
-    border: 1px solid var(--bg-light-gray);
+    border: 1px solid var(--theme-border);
 }
 
 .modal-tabs {
     display: flex;
-    border-bottom: 1px solid var(--bg-light-gray);
+    border-bottom: 1px solid var(--theme-border);
 }
 
 .modal-tab {
@@ -413,7 +471,7 @@ body {
 
 .modal-tab i {
     font-size: 16px;
-    color: var(--text-white);
+    color: var(--theme-accent);
 }
 
 .modal-tab:hover {
@@ -500,7 +558,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 48px;
-    color: var(--text-white);
+    color: var(--theme-accent);
 }
 
 .detail-name {
@@ -569,7 +627,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 24px;
-    color: var(--text-white);
+    color: var(--theme-accent);
 }
 
 .recipe-name {
@@ -659,7 +717,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: var(--text-white);
+    color: var(--theme-accent);
     flex-shrink: 0;
 }
 
@@ -905,7 +963,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    border: 1px solid var(--bg-light-gray);
+    border: 1px solid var(--theme-border);
     text-align: center;
     min-width: 320px;
     animation: discoveryPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -929,7 +987,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 56px;
-    color: var(--text-white);
+    color: var(--theme-accent);
 }
 
 .discovery-name {
@@ -947,7 +1005,7 @@ body {
     padding: 12px 16px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-sm);
-    border: 1px solid var(--bg-light-gray);
+    border: 1px solid var(--theme-border);
 }
 
 .discovery-recipe-ingredient {
@@ -964,7 +1022,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 22px;
-    color: var(--text-white);
+    color: var(--theme-accent);
 }
 
 .discovery-recipe-name {
@@ -986,7 +1044,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 5px 14px;
-    border: 1px solid var(--bg-light-gray);
+    border: 1px solid var(--theme-border);
     border-radius: var(--radius-sm);
     background: var(--bg-light-gray);
     display: none;
@@ -1007,7 +1065,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 24px;
-    border: 1px solid var(--bg-light-gray);
+    border: 1px solid var(--theme-border);
     text-align: center;
     min-width: 320px;
     max-width: 400px;
@@ -1114,7 +1172,7 @@ body {
 /* Outline icon style (for icons without a regular/free variant) */
 .icon-outline {
     color: transparent;
-    -webkit-text-stroke: 3.5px var(--text-white);
+    -webkit-text-stroke: 3.5px var(--theme-accent);
 }
 
 /* Uniform SVG icon sizing */
@@ -1123,4 +1181,216 @@ body {
     height: 1.15em !important;
     max-width: 100%;
     max-height: 100%;
+}
+
+/* ==========================================
+   Settings Modal
+   ========================================== */
+.settings-modal-content {
+    width: 640px;
+    max-height: 80vh;
+    background: var(--bg-gray);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--theme-border);
+}
+
+.settings-nav {
+    width: 180px;
+    background: rgba(0,0,0,0.2);
+    border-right: 1px solid var(--theme-border);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.settings-nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-gray);
+    cursor: pointer;
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.2s ease, background 0.2s ease;
+    font-family: 'Inter', system-ui, sans-serif;
+    text-align: left;
+    border-radius: 0 8px 8px 0;
+    margin-right: 8px;
+}
+
+.settings-nav-btn i {
+    font-size: 15px;
+    width: 18px;
+    text-align: center;
+    color: var(--theme-accent);
+}
+
+.settings-nav-btn:hover {
+    color: var(--text-light);
+    background: rgba(255,255,255,0.03);
+}
+
+.settings-nav-btn.active {
+    color: var(--text-white);
+    background: rgba(255,255,255,0.06);
+}
+
+.settings-body {
+    flex: 1;
+    padding: 28px 32px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-section {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.settings-section.active {
+    display: flex;
+}
+
+.settings-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-white);
+    margin: 0 0 4px 0;
+}
+
+.settings-section-desc {
+    font-size: 12px;
+    color: var(--text-gray);
+    margin-bottom: 8px;
+}
+
+/* Theme preview circles */
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.theme-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-option:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.theme-option.selected {
+    border-color: var(--theme-accent);
+    background: rgba(255,255,255,0.05);
+}
+
+.theme-preview {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-preview-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+}
+
+.theme-preview-bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+}
+
+.theme-preview-bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+}
+
+.theme-check {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--theme-accent);
+    color: var(--bg-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.theme-option.selected .theme-check {
+    opacity: 1;
+}
+
+.theme-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-light);
+    text-align: center;
+}
+
+/* Reset game section */
+.reset-section {
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.reset-warning {
+    font-size: 13px;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+.reset-btn {
+    background: rgba(220, 80, 80, 0.12);
+    border: 1px solid rgba(220, 80, 80, 0.3);
+    color: #e07070;
+    cursor: pointer;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.reset-btn:hover {
+    background: rgba(220, 80, 80, 0.2);
+    border-color: rgba(220, 80, 80, 0.5);
 }

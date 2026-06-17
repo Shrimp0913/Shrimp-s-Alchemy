@@ -24,6 +24,7 @@ let canvasItems = [];
 let normalCanvasItems = [];
 let adminCanvasItems = [];
 let nextUid = 1;
+let settings = { theme: 'default' };
 
 let dragItem = null;
 let dragOffset = { x: 0, y: 0 };
@@ -183,6 +184,9 @@ function init() {
 
     // Load saved progress
     loadProgress();
+
+    // Apply theme
+    applyTheme();
 }
 
 function _addRecipe(a, b, result) {
@@ -198,13 +202,15 @@ function _addRecipe(a, b, result) {
 
 const SAVE_KEY = 'shrimpAlchemy_save';
 const VERSION_KEY = 'shrimpAlchemy_version';
+const SETTINGS_KEY = 'shrimpAlchemy_settings';
 
 function saveProgress() {
     try {
         const data = {
             unlocked: Array.from(unlocked),
             discoveredRecipes: Array.from(discoveredRecipes),
-            version: GAME_VERSION
+            version: GAME_VERSION,
+            settings: settings
         };
         localStorage.setItem(SAVE_KEY, JSON.stringify(data));
     } catch (e) {
@@ -243,6 +249,12 @@ function loadProgress() {
             });
         }
 
+        // Restore settings
+        if (data.settings && typeof data.settings === 'object') {
+            settings = { ...settings, ...data.settings };
+            applyTheme();
+        }
+
         // If game was updated (version changed), clear canvas but keep progress
         if (savedVersion && savedVersion !== GAME_VERSION) {
             // Version mismatch - canvas already cleared on fresh page load
@@ -260,10 +272,73 @@ function loadProgress() {
     }
 }
 
+// ==========================================
+// Theme System
+// ==========================================
+
+const THEMES = [
+    { id: 'default', name: 'Default', accent: '#ffffff', text: '#d0d0d0', glass: '#2a2a2a' },
+    { id: 'blue', name: 'Blue', accent: '#5aa8ff', text: '#d0e6ff', glass: '#1a2d4a' },
+    { id: 'yellow', name: 'Yellow', accent: '#e5c84b', text: '#f5e8b8', glass: '#3a3518' },
+    { id: 'pink', name: 'Pink', accent: '#e87ea1', text: '#ffd0e0', glass: '#3a2028' },
+    { id: 'green', name: 'Green', accent: '#5ec376', text: '#c0f0cc', glass: '#163a24' },
+    { id: 'purple', name: 'Purple', accent: '#a07ce8', text: '#ddd0f0', glass: '#241638' },
+];
+
+function applyTheme() {
+    const themeId = settings.theme || 'default';
+    document.body.setAttribute('data-theme', themeId === 'default' ? '' : themeId);
+}
+
+function selectTheme(themeId) {
+    settings.theme = themeId;
+    applyTheme();
+    saveProgress();
+    renderThemeGrid();
+}
+
+function renderThemeGrid() {
+    const grid = document.getElementById('theme-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    THEMES.forEach(theme => {
+        const option = document.createElement('div');
+        option.className = 'theme-option' + (settings.theme === theme.id ? ' selected' : '');
+        option.dataset.theme = theme.id;
+        option.innerHTML = `
+            <div class="theme-preview">
+                <div class="theme-preview-top" style="background:${theme.accent}"></div>
+                <div class="theme-preview-bottom-left" style="background:${theme.text}"></div>
+                <div class="theme-preview-bottom-right" style="background:${theme.glass}"></div>
+                <div class="theme-check"><i class="fas fa-check"></i></div>
+            </div>
+            <span class="theme-name">${theme.name}</span>
+        `;
+        option.addEventListener('click', () => selectTheme(theme.id));
+        grid.appendChild(option);
+    });
+}
+
+// ==========================================
+// Settings Modal
+// ==========================================
+
+function openSettings() {
+    const modal = document.getElementById('settings-modal');
+    if (!modal) return;
+    renderThemeGrid();
+    modal.classList.remove('hidden');
+}
+
+function closeSettings() {
+    document.getElementById('settings-modal')?.classList.add('hidden');
+}
+
 function resetGame() {
     try {
         localStorage.removeItem(SAVE_KEY);
         localStorage.removeItem(VERSION_KEY);
+        localStorage.removeItem(SETTINGS_KEY);
     } catch (e) {}
 
     // Reset all element discovered states
@@ -284,6 +359,10 @@ function resetGame() {
 
     // Reset discovered recipes
     discoveredRecipes.clear();
+
+    // Reset settings
+    settings = { theme: 'default' };
+    applyTheme();
 
     // Reset god mode
     if (godMode) {
@@ -429,6 +508,30 @@ function bindEvents() {
 
     document.getElementById('btn-encyclopedia').addEventListener('click', openEncyclopedia);
 
+    document.getElementById('btn-settings').addEventListener('click', openSettings);
+
+    document.getElementById('settings-modal-close')?.addEventListener('click', closeSettings);
+    document.getElementById('settings-modal')?.addEventListener('click', (e) => {
+        if (e.target === document.getElementById('settings-modal')) closeSettings();
+    });
+
+    document.getElementById('btn-reset-game')?.addEventListener('click', () => {
+        closeSettings();
+        setTimeout(() => {
+            confirmAction = 'resetGame';
+            showConfirmModal('resetGame');
+        }, 200);
+    });
+
+    document.querySelectorAll('.settings-nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.settings-nav-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('section-' + btn.dataset.section)?.classList.add('active');
+        });
+    });
+
     const sidebarSearch = document.getElementById('sidebar-search');
     const sidebarSearchClear = document.getElementById('sidebar-search-clear');
     if (sidebarSearch) {
@@ -472,6 +575,8 @@ function bindEvents() {
         closeConfirmModal();
         if (confirmAction === 'toggleGodMode') {
             setTimeout(() => toggleGodMode(), 50);
+        } else if (confirmAction === 'resetGame') {
+            setTimeout(() => resetGame(), 50);
         } else {
             clearCanvas();
         }
