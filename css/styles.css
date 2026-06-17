@@ -26,9 +26,6 @@
 }
 
 [data-theme="blue"] {
-    --bg-gray: #0f1e33;
-    --bg-light-gray: #1a2d4a;
-    --bg-hover: #1e3a5a;
     --text-white: #d0e6ff;
     --text-gray: #5a8ab5;
     --text-light: #7aadcc;
@@ -37,9 +34,6 @@
 }
 
 [data-theme="yellow"] {
-    --bg-gray: #2a250e;
-    --bg-light-gray: #3a3518;
-    --bg-hover: #4a4020;
     --text-white: #f5e8b8;
     --text-gray: #a09050;
     --text-light: #c0b070;
@@ -48,9 +42,6 @@
 }
 
 [data-theme="pink"] {
-    --bg-gray: #2a1520;
-    --bg-light-gray: #3a2028;
-    --bg-hover: #4a2a38;
     --text-white: #ffd0e0;
     --text-gray: #a07088;
     --text-light: #c090a8;
@@ -59,9 +50,6 @@
 }
 
 [data-theme="green"] {
-    --bg-gray: #0d2a18;
-    --bg-light-gray: #163a24;
-    --bg-hover: #1e4a30;
     --text-white: #c0f0cc;
     --text-gray: #5a9068;
     --text-light: #78b888;
@@ -70,9 +58,6 @@
 }
 
 [data-theme="purple"] {
-    --bg-gray: #1a0d2a;
-    --bg-light-gray: #241638;
-    --bg-hover: #301e48;
     --text-white: #ddd0f0;
     --text-gray: #7a6a9a;
     --text-light: #9688b0;

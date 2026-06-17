@@ -278,11 +278,11 @@ function loadProgress() {
 
 const THEMES = [
     { id: 'default', name: 'Default', accent: '#ffffff', text: '#d0d0d0', glass: '#2a2a2a' },
-    { id: 'blue', name: 'Blue', accent: '#5aa8ff', text: '#d0e6ff', glass: '#1a2d4a' },
-    { id: 'yellow', name: 'Yellow', accent: '#e5c84b', text: '#f5e8b8', glass: '#3a3518' },
-    { id: 'pink', name: 'Pink', accent: '#e87ea1', text: '#ffd0e0', glass: '#3a2028' },
-    { id: 'green', name: 'Green', accent: '#5ec376', text: '#c0f0cc', glass: '#163a24' },
-    { id: 'purple', name: 'Purple', accent: '#a07ce8', text: '#ddd0f0', glass: '#241638' },
+    { id: 'blue', name: 'Blue', accent: '#5aa8ff', text: '#d0e6ff', glass: '#2a2a2a' },
+    { id: 'yellow', name: 'Yellow', accent: '#e5c84b', text: '#f5e8b8', glass: '#2a2a2a' },
+    { id: 'pink', name: 'Pink', accent: '#e87ea1', text: '#ffd0e0', glass: '#2a2a2a' },
+    { id: 'green', name: 'Green', accent: '#5ec376', text: '#c0f0cc', glass: '#2a2a2a' },
+    { id: 'purple', name: 'Purple', accent: '#a07ce8', text: '#ddd0f0', glass: '#2a2a2a' },
 ];
 
 function applyTheme() {
