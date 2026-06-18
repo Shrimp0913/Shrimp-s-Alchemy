@@ -725,30 +725,41 @@ function bindEvents() {
             const gapY = gapX;
             const startX = paddingX + (canvasRect.width - paddingX * 2 - gapX * cols) / 2;
             const startY = paddingY;
+            const rows = Math.max(1, Math.floor((canvasRect.height - paddingY * 2) / gapY));
 
-            const encItems = canvasItems.filter(i => i.fromEncyclopedia);
-            let index = 0;
-            let x, y;
-            while (true) {
-                const col = index % cols;
-                const row = Math.floor(index / cols);
-                const gx = startX + col * gapX;
-                const gy = startY + row * gapY;
-                const occupied = encItems.some(item => {
-                    const dx = item.x - gx;
-                    const dy = item.y - gy;
-                    return Math.abs(dx) < gapX / 2 && Math.abs(dy) < gapY / 2;
-                });
-                if (!occupied) {
-                    x = gx;
-                    y = gy;
-                    break;
+            // Generate grid slots in top-down, left-to-right order
+            const slots = [];
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    slots.push({ row: r, col: c, gx: startX + c * gapX, gy: startY + r * gapY });
                 }
-                index++;
             }
 
-            const newItem = createCanvasElement(id, x, y);
+            // Mark slots still occupied by encyclopedia items that have not moved
+            const occupied = new Set();
+            canvasItems.forEach(item => {
+                if (!item.fromEncyclopedia || !item.encSlot) return;
+                const idx = item.encSlot.row * cols + item.encSlot.col;
+                const slot = slots[idx];
+                if (!slot) return;
+                if (Math.abs(item.x - slot.gx) < gapX / 2 && Math.abs(item.y - slot.gy) < gapY / 2) {
+                    occupied.add(idx);
+                }
+            });
+
+            // Fill the first empty slot; if every slot is full and untouched, do nothing
+            let targetSlot = null;
+            for (let i = 0; i < slots.length; i++) {
+                if (!occupied.has(i)) {
+                    targetSlot = slots[i];
+                    break;
+                }
+            }
+            if (!targetSlot) return;
+
+            const newItem = createCanvasElement(id, targetSlot.gx, targetSlot.gy);
             newItem.fromEncyclopedia = true;
+            newItem.encSlot = { row: targetSlot.row, col: targetSlot.col };
         });
     }
 
