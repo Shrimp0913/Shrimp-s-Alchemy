@@ -32,9 +32,9 @@
 }
 
 [data-theme="orange"] {
-    --text-gray: #b09050;
-    --text-light: #d0b070;
-    --theme-accent: #c09040;
+    --text-gray: #c0a040;
+    --text-light: #e0c060;
+    --theme-accent: #d8a030;
 }
 
 [data-theme="red"] {
@@ -50,9 +50,9 @@
 }
 
 [data-theme="pink"] {
-    --text-gray: #b08090;
-    --text-light: #d0a0b0;
-    --theme-accent: #b07080;
+    --text-gray: #c06080;
+    --text-light: #e080a0;
+    --theme-accent: #c85a78;
 }
 
 [data-theme="green"] {
