@@ -1076,6 +1076,23 @@ function attemptMerge(a, b) {
     const rx = (a.x + b.x) / 2;
     const ry = (a.y + b.y) / 2;
 
+    // Already-discovered recipe: floating result icon, ingredients remain
+    if (discoveredRecipes.has(key)) {
+        const ghost = document.createElement('div');
+        ghost.className = 'merge-result-ghost' + (finalItems.has(resultId) ? ' final-item' : '');
+        const el = elements[resultId];
+        ghost.innerHTML = `<div class="el-icon">${el ? el.icon : '<i class="fas fa-question"></i>'}</div>`;
+        if (settings.theme === 'rainbow' && !finalItems.has(resultId)) {
+            const color = getRandomColorTheme();
+            ghost.querySelector('.el-icon').style.color = color;
+        }
+        ghost.style.left = rx + 'px';
+        ghost.style.top = ry + 'px';
+        canvas.appendChild(ghost);
+        ghost.addEventListener('animationend', () => ghost.remove(), { once: true });
+        return;
+    }
+
     if (aEl) {
         aEl.style.transition = 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
         aEl.style.left = rx + 'px';
