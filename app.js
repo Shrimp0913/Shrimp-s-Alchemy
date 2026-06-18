@@ -298,7 +298,47 @@ const THEMES = [
     { id: 'pink', name: 'Pink', darkAccent: '#d192a0', darkText: '#f0b3c0', lightAccent: '#b17280', lightText: '#ca92a0', glass: '#2a2a2a' },
     { id: 'green', name: 'Green', darkAccent: '#708058', darkText: '#a0b880', lightAccent: '#506840', lightText: '#607850', glass: '#2a2a2a' },
     { id: 'purple', name: 'Purple', darkAccent: '#805878', darkText: '#c0a0b0', lightAccent: '#704060', lightText: '#805070', glass: '#2a2a2a' },
+    { id: 'rainbow', name: 'Rainbow', darkAccent: '#ffffff', darkText: '#d0d0d0', lightAccent: '#1a1a1a', lightText: '#333333', glass: '#2a2a2a', isColorWheel: true },
 ];
+
+
+function getRandomColorTheme() {
+    const themes = THEMES.filter(t => t.id !== 'default' && t.id !== 'rainbow');
+    return themes[Math.floor(Math.random() * themes.length)].darkAccent;
+}
+
+function renderColorWheelPreview() {
+    const colors = THEMES.filter(t => t.id !== 'rainbow').map(t => t.darkAccent);
+    const cx = 28, cy = 28, r = 28;
+    const count = colors.length;
+    let paths = '';
+    for (let i = 0; i < count; i++) {
+        const a1 = (i * 2 * Math.PI) / count - Math.PI / 2;
+        const a2 = ((i + 1) * 2 * Math.PI) / count - Math.PI / 2;
+        const x1 = cx + r * Math.cos(a1);
+        const y1 = cy + r * Math.sin(a1);
+        const x2 = cx + r * Math.cos(a2);
+        const y2 = cy + r * Math.sin(a2);
+        paths += `<path d=\"M${cx},${cy} L${x1.toFixed(1)},${y1.toFixed(1)} A${r},${r} 0 0,1 ${x2.toFixed(1)},${y2.toFixed(1)} Z\" fill=\"${colors[i]}\" />`;
+    }
+    return `<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 56 56\" width=\"56\" height=\"56\" style=\"display:block;\">${paths}</svg>`;
+}
+
+function updateCanvasColors() {
+    canvasItems.forEach(item => {
+        const el = canvas.querySelector(`.canvas-element[data-uid=\"${item.uid}\"]`);
+        if (!el) return;
+        const icon = el.querySelector('.el-icon');
+        if (!icon) return;
+        if (settings.theme === 'rainbow' && !finalItems.has(item.elementId)) {
+            const color = item.colorTheme || getRandomColorTheme();
+            item.colorTheme = color;
+            icon.style.color = color;
+        } else {
+            icon.style.color = '';
+        }
+    });
+}
 
 function applyTheme() {
     const themeId = settings.theme || 'default';
@@ -316,6 +356,7 @@ function applyTheme() {
         document.documentElement.style.removeProperty('--theme-accent');
         document.documentElement.style.removeProperty('--text-white');
     }
+    updateCanvasColors();
 }
 
 function selectTheme(themeId) {
@@ -350,11 +391,14 @@ function renderThemeGrid() {
         const option = document.createElement('div');
         option.className = 'theme-option' + (settings.theme === theme.id ? ' selected' : '');
         option.dataset.theme = theme.id;
+        const preview = theme.id === 'rainbow'
+            ? renderColorWheelPreview()
+            : `<div class="theme-preview-top" style="background:${accent}"></div>
+               <div class="theme-preview-bottom-left" style="background:${text}"></div>
+               <div class="theme-preview-bottom-right" style="background:${theme.glass}"></div>`;
         option.innerHTML = `
             <div class="theme-preview">
-                <div class="theme-preview-top" style="background:${accent}"></div>
-                <div class="theme-preview-bottom-left" style="background:${text}"></div>
-                <div class="theme-preview-bottom-right" style="background:${theme.glass}"></div>
+                ${preview}
                 <div class="theme-check"><i class="fas fa-check"></i></div>
             </div>
         `;
@@ -493,6 +537,11 @@ function renderCanvasItem(item, animate = false) {
         html += `<div class="ripple"></div><div class="ripple" style="animation-delay:-0.8s"></div>`;
     }
     div.innerHTML = html;
+    if (settings.theme === 'rainbow' && !finalItems.has(item.elementId)) {
+        const color = item.colorTheme || getRandomColorTheme();
+        item.colorTheme = color;
+        div.querySelector('.el-icon').style.color = color;
+    }
     canvas.appendChild(div);
     if (animate) {
         div.classList.add('pop-in');
@@ -505,6 +554,9 @@ function renderCanvasItem(item, animate = false) {
 
 function createCanvasElement(elementId, x, y, animate = false, fromEncyclopedia = false) {
     const item = { uid: nextUid++, elementId, x, y, fromEncyclopedia };
+    if (settings.theme === 'rainbow' && !finalItems.has(elementId)) {
+        item.colorTheme = getRandomColorTheme();
+    }
     canvasItems.push(item);
     renderCanvasItem(item, animate);
     return item;
@@ -730,6 +782,9 @@ function onSidebarMouseDown(e) {
     dragClone.style.transform = 'scale(1.1)';
     const elData = elements[elementId];
     dragClone.innerHTML = `<div class="drag-clone-icon">${elData.icon}</div>`;
+    if (settings.theme === 'rainbow' && !finalItems.has(elementId)) {
+        dragClone.style.color = getRandomColorTheme();
+    }
     document.body.appendChild(dragClone);
 
     const cloneRect = dragClone.getBoundingClientRect();
