@@ -32,9 +32,9 @@
 }
 
 [data-theme="orange"] {
-    --text-gray: #a08060;
-    --text-light: #c0a080;
-    --theme-accent: #b08050;
+    --text-gray: #b09050;
+    --text-light: #d0b070;
+    --theme-accent: #c09040;
 }
 
 [data-theme="red"] {
