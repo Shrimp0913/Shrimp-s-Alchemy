@@ -50,9 +50,9 @@
 }
 
 [data-theme="pink"] {
-    --text-gray: #c06080;
-    --text-light: #e080a0;
-    --theme-accent: #c85a78;
+    --text-gray: #c88098;
+    --text-light: #f0a0b8;
+    --theme-accent: #d08098;
 }
 
 [data-theme="green"] {
