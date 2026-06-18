@@ -287,9 +287,9 @@ const THEMES = [
     { id: 'default', name: 'Default', darkAccent: '#ffffff', darkText: '#d0d0d0', lightAccent: '#1a1a1a', lightText: '#333333', glass: '#2a2a2a' },
     { id: 'blue', name: 'Blue', darkAccent: '#5a80b0', darkText: '#90b0d0', lightAccent: '#3a6080', lightText: '#506880', glass: '#2a2a2a' },
     { id: 'orange', name: 'Orange', darkAccent: '#b08050', darkText: '#d0b080', lightAccent: '#805830', lightText: '#a08060', glass: '#2a2a2a' },
-    { id: 'red', name: 'Red', darkAccent: '#7a4848', darkText: '#a08080', lightAccent: '#6a3838', lightText: '#805050', glass: '#2a2a2a' },
+    { id: 'red', name: 'Red', darkAccent: '#b06060', darkText: '#c08080', lightAccent: '#904040', lightText: '#b07070', glass: '#2a2a2a' },
     { id: 'slate', name: 'Slate', darkAccent: '#708090', darkText: '#a0b0c0', lightAccent: '#506070', lightText: '#607080', glass: '#2a2a2a' },
-    { id: 'pink', name: 'Pink', darkAccent: '#a07080', darkText: '#c8a0b0', lightAccent: '#805060', lightText: '#906070', glass: '#2a2a2a' },
+    { id: 'pink', name: 'Pink', darkAccent: '#b07080', darkText: '#d0a0b0', lightAccent: '#905060', lightText: '#a07080', glass: '#2a2a2a' },
     { id: 'green', name: 'Green', darkAccent: '#708058', darkText: '#a0b880', lightAccent: '#506840', lightText: '#607850', glass: '#2a2a2a' },
     { id: 'purple', name: 'Purple', darkAccent: '#805878', darkText: '#c0a0b0', lightAccent: '#704060', lightText: '#805070', glass: '#2a2a2a' },
 ];

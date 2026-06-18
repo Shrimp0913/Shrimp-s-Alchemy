@@ -38,9 +38,9 @@
 }
 
 [data-theme="red"] {
-    --text-gray: #906060;
-    --text-light: #a08080;
-    --theme-accent: #7a4848;
+    --text-gray: #a06060;
+    --text-light: #c08080;
+    --theme-accent: #b06060;
 }
 
 [data-theme="slate"] {
@@ -50,9 +50,9 @@
 }
 
 [data-theme="pink"] {
-    --text-gray: #a08090;
-    --text-light: #c0a0b0;
-    --theme-accent: #a07080;
+    --text-gray: #b08090;
+    --text-light: #d0a0b0;
+    --theme-accent: #b07080;
 }
 
 [data-theme="green"] {
