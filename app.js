@@ -304,7 +304,16 @@ const THEMES = [
 
 function getRandomColorTheme() {
     const themes = THEMES.filter(t => t.id !== 'default' && t.id !== 'rainbow');
-    return themes[Math.floor(Math.random() * themes.length)].darkAccent;
+    const counts = {};
+    canvasItems.forEach(item => {
+        if (item.colorTheme) {
+            counts[item.colorTheme] = (counts[item.colorTheme] || 0) + 1;
+        }
+    });
+    themes.forEach(t => counts[t.darkAccent] = counts[t.darkAccent] || 0);
+    const minCount = Math.min(...themes.map(t => counts[t.darkAccent]));
+    const candidates = themes.filter(t => counts[t.darkAccent] === minCount);
+    return candidates[Math.floor(Math.random() * candidates.length)].darkAccent;
 }
 
 function renderColorWheelPreview() {
