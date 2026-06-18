@@ -552,10 +552,10 @@ function renderCanvasItem(item, animate = false) {
     return div;
 }
 
-function createCanvasElement(elementId, x, y, animate = false, fromEncyclopedia = false) {
+function createCanvasElement(elementId, x, y, animate = false, fromEncyclopedia = false, colorTheme = null) {
     const item = { uid: nextUid++, elementId, x, y, fromEncyclopedia };
     if (settings.theme === 'rainbow' && !finalItems.has(elementId)) {
-        item.colorTheme = getRandomColorTheme();
+        item.colorTheme = colorTheme || getRandomColorTheme();
     }
     canvasItems.push(item);
     renderCanvasItem(item, animate);
@@ -773,8 +773,13 @@ function onSidebarMouseDown(e) {
 
     const elementId = sidebarEl.dataset.id;
     if (!godMode && finalItems.has(elementId)) return;
+
+    const dragColor = settings.theme === 'rainbow' && !finalItems.has(elementId)
+        ? getRandomColorTheme()
+        : null;
+
     dragSource = 'sidebar';
-    dragItem = { elementId, uid: nextUid++ };
+    dragItem = { elementId, uid: nextUid++, colorTheme: dragColor };
 
     dragClone = document.createElement('div');
     dragClone.className = 'drag-clone' + (finalItems.has(elementId) ? ' final-item' : '');
@@ -782,8 +787,8 @@ function onSidebarMouseDown(e) {
     dragClone.style.transform = 'scale(1.1)';
     const elData = elements[elementId];
     dragClone.innerHTML = `<div class="drag-clone-icon">${elData.icon}</div>`;
-    if (settings.theme === 'rainbow' && !finalItems.has(elementId)) {
-        dragClone.style.color = getRandomColorTheme();
+    if (dragColor) {
+        dragClone.querySelector('.drag-clone-icon').style.color = dragColor;
     }
     document.body.appendChild(dragClone);
 
@@ -862,7 +867,7 @@ function onMouseUp(e) {
             e.clientY > canvasRect.top && e.clientY < canvasRect.bottom) {
             const x = e.clientX - canvasRect.left - dragOffset.x;
             const y = e.clientY - canvasRect.top - dragOffset.y;
-            const newItem = createCanvasElement(dragItem.elementId, x, y);
+            const newItem = createCanvasElement(dragItem.elementId, x, y, false, false, dragItem.colorTheme);
             const target = findMergeTargetAt(newItem, e.clientX, e.clientY);
             if (target) attemptMerge(newItem, target);
         }
