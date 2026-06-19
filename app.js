@@ -1079,17 +1079,21 @@ function attemptMerge(a, b) {
     // Already-discovered recipe: floating result icon, ingredients remain
     if (discoveredRecipes.has(key)) {
         const ghost = document.createElement('div');
-        ghost.className = 'merge-result-ghost' + (finalItems.has(resultId) ? ' final-item' : '');
+        ghost.className = 'merge-result-ghost';
         const el = elements[resultId];
         ghost.innerHTML = `<div class="el-icon">${el ? el.icon : '<i class="fas fa-question"></i>'}</div>`;
-        if (settings.theme === 'rainbow' && !finalItems.has(resultId)) {
-            const color = getRandomColorTheme();
-            ghost.querySelector('.el-icon').style.color = color;
+        const targetRect = bEl ? bEl.getBoundingClientRect() : null;
+        const canvasRect = canvas.getBoundingClientRect();
+        if (targetRect) {
+            ghost.style.left = (targetRect.left + targetRect.width / 2 - canvasRect.left) + 'px';
+            ghost.style.top = (targetRect.top - canvasRect.top) + 'px';
+        } else {
+            ghost.style.left = b.x + 'px';
+            ghost.style.top = b.y + 'px';
         }
-        ghost.style.left = rx + 'px';
-        ghost.style.top = ry + 'px';
         canvas.appendChild(ghost);
         ghost.addEventListener('animationend', () => ghost.remove(), { once: true });
+        if (navigator.vibrate) navigator.vibrate(40);
         return;
     }
 
