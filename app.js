@@ -193,7 +193,6 @@ function init() {
     _addRecipe('string', 'sheep', 'yarn');
     _addRecipe('fiber', 'water', 'paper');
     _addRecipe('sky', 'metal', 'airplane');
-    _addRecipe('sky', 'metal', 'airplane');
 
     // Final items (cannot be used to craft further, hidden from sidebar)
     finalItems.add('mountain-sun');
