@@ -521,7 +521,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .sidebar-element.final-
     font-size: var(--el-icon-font);
     pointer-events: none;
     z-index: 20;
-    transform: translate(-50%, -120%);
+    transform: translate(-50%, -70%) scale(0.7);
     animation: mergeResultFloat 1.2s ease-out forwards;
 }
 
@@ -544,18 +544,18 @@ body[data-mode="light"] .merge-result-ghost .el-icon {
 @keyframes mergeResultFloat {
     0% {
         opacity: 0;
-        transform: translate(-50%, -120%) scale(0.7);
+        transform: translate(-50%, -70%) scale(0.7);
     }
     20% {
-        opacity: 1;
-        transform: translate(-50%, -120%) scale(1);
+        opacity: 0.75;
+        transform: translate(-50%, -70%) scale(0.7);
     }
     80% {
-        opacity: 1;
+        opacity: 0.75;
     }
     100% {
         opacity: 0;
-        transform: translate(-50%, -220%) scale(1);
+        transform: translate(-50%, -170%) scale(0.7);
     }
 }
 

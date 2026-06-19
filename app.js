@@ -1093,7 +1093,6 @@ function attemptMerge(a, b) {
         }
         canvas.appendChild(ghost);
         ghost.addEventListener('animationend', () => ghost.remove(), { once: true });
-        if (navigator.vibrate) navigator.vibrate(40);
         return;
     }
 
