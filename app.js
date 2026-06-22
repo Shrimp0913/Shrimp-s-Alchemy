@@ -288,7 +288,7 @@ function init() {
     // Fruit blender rule: only the base fruit element makes juice
     _addRecipe('blender', 'fruit', 'juice');
 
-    // Sunset recipe (renamed from mountain-sun)
+    // Sunset recipe
     _addRecipe('sun', 'mountain', 'sunset');
 
     // Final items (cannot be used to craft further, hidden from sidebar)
@@ -375,6 +375,8 @@ function loadProgress() {
 
         // Restore unlocked elements
         if (data.unlocked && Array.isArray(data.unlocked)) {
+            // Migrate old element IDs renamed in newer versions
+            data.unlocked = data.unlocked.map(id => id === 'mountain-sun' ? 'sunset' : id);
             data.unlocked.forEach(id => {
                 unlocked.add(id);
                 if (elements[id]) {
@@ -615,7 +617,7 @@ function renderSidebar() {
     const query = sidebarSearch ? sidebarSearch.value.trim().toLowerCase() : '';
     sidebarElements.innerHTML = '';
     let sorted = Array.from(unlocked)
-        .filter(id => godMode || !finalItems.has(id))
+        .filter(id => elements[id] && (godMode || !finalItems.has(id)))
         .sort((a, b) => a.localeCompare(b));
     if (query) {
         sorted = sorted.filter(id => elements[id].name.toLowerCase().includes(query));
