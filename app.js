@@ -181,7 +181,7 @@ function init() {
     elements['helicopter'] = { id: 'helicopter', name: 'helicopter', icon: '<svg style="display:block;width:1.2em;height:1.2em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--! Font Awesome Pro 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M208 96C194.7 96 184 106.7 184 120C184 133.3 194.7 144 208 144L360 144L360 192L139.2 192L106.4 152.6C101.9 147.2 95.1 144 88 144L56 144C47.7 144 40 148.3 35.6 155.4C31.2 162.5 30.8 171.3 34.5 178.8L82.5 274.8C86.6 282.9 94.9 288 104 288L211.8 288L315.8 431.1C330.9 451.8 354.9 464 380.5 464L456 464C531.1 464 592 403.1 592 328C592 252.9 531.1 192 456 192L408 192L408 144L560 144C573.3 144 584 133.3 584 120C584 106.7 573.3 96 560 96L208 96zM408 256L456 256C495.8 256 528 288.2 528 328C528 367.8 495.8 400 456 400L408 400L408 256zM584 480C570.7 480 560 490.7 560 504C560 508.4 556.4 512 552 512L280 512C266.7 512 256 522.7 256 536C256 549.3 266.7 560 280 560L552 560C582.9 560 608 534.9 608 504C608 490.7 597.3 480 584 480z"/></svg>', discovered: false };
     elements['petroleum'] = { id: 'petroleum', name: 'petroleum', icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--! Font Awesome Pro 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M344.5 64C375.4 64 400.5 89.1 400.5 120L400.5 160.9C413.6 163.1 425.8 169.2 435.2 178.7L493.7 237.2C505.7 249.2 512.4 265.5 512.4 282.4L512.4 511.9C512.4 547.2 483.7 575.9 448.4 575.9L192.4 575.9C157.1 575.9 128.4 547.2 128.4 511.9L128.4 223.9C128.4 194.1 148.8 169.1 176.4 162L176.4 119.9C176.4 89 201.5 63.9 232.4 63.9L344.4 63.9zM433.5 287C424.1 277.6 408.9 277.6 399.6 287L374.6 312L266.5 312L241.5 287C232.1 277.6 216.9 277.6 207.6 287C198.3 296.4 198.2 311.6 207.6 320.9L232.6 345.9L232.6 422L207.6 447C198.2 456.4 198.2 471.6 207.6 480.9C217 490.2 232.2 490.3 241.5 480.9L266.5 455.9L374.6 455.9L399.6 480.9C409 490.3 424.2 490.3 433.5 480.9C442.8 471.5 442.9 456.3 433.5 447L408.5 422L408.5 345.9L433.5 320.9C442.9 311.5 442.9 296.3 433.5 287zM360.5 408L280.5 408L280.5 360L360.5 360L360.5 408zM463.5 111C472.9 101.6 488.1 101.6 497.4 111L561.4 175C570.8 184.4 570.8 199.6 561.4 208.9C552 218.2 536.8 218.3 527.5 208.9L463.5 144.9C454.1 135.5 454.1 120.3 463.5 111zM232.5 112C228.1 112 224.5 115.6 224.5 120L224.5 160L352.5 160L352.5 120C352.5 115.6 348.9 112 344.5 112L232.5 112z"/></svg>', discovered: false };
 
-    elements['tarp'] = { id: 'tarp', name: 'fabric', icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--! Font Awesome Pro 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M512 128C547.3 128 576 156.7 576 192L576 341.5C576 358.5 569.3 374.8 557.3 386.8L450.7 493.3C438.7 505.3 422.4 512 405.4 512L128 512C92.7 512 64 483.3 64 448L64 192C64 156.7 92.7 128 128 128L512 128zM517.5 336L424 336C410.7 336 400 346.7 400 360L400 453.5L517.5 336zM160 256C177.7 256 192 241.7 192 224C192 206.3 177.7 192 160 192C142.3 192 128 206.3 128 224C128 241.7 142.3 256 160 256z"/></svg>', discovered: false };
+    elements['fabric'] = { id: 'fabric', name: 'fabric', icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--! Font Awesome Pro 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M512 128C547.3 128 576 156.7 576 192L576 341.5C576 358.5 569.3 374.8 557.3 386.8L450.7 493.3C438.7 505.3 422.4 512 405.4 512L128 512C92.7 512 64 483.3 64 448L64 192C64 156.7 92.7 128 128 128L512 128zM517.5 336L424 336C410.7 336 400 346.7 400 360L400 453.5L517.5 336zM160 256C177.7 256 192 241.7 192 224C192 206.3 177.7 192 160 192C142.3 192 128 206.3 128 224C128 241.7 142.3 256 160 256z"/></svg>', discovered: false };
     elements['ballot'] = { id: 'ballot', name: 'cardboard', icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--! Font Awesome Pro 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M192 64C156.7 64 128 92.7 128 128L128 512C128 547.3 156.7 576 192 576L448 576C483.3 576 512 547.3 512 512L512 128C512 92.7 483.3 64 448 64L192 64zM256 192C256 209.7 241.7 224 224 224C206.3 224 192 209.7 192 192C192 174.3 206.3 160 224 160C241.7 160 256 174.3 256 192zM256 320C256 337.7 241.7 352 224 352C206.3 352 192 337.7 192 320C192 302.3 206.3 288 224 288C241.7 288 256 302.3 256 320zM224 480C206.3 480 192 465.7 192 448C192 430.3 206.3 416 224 416C241.7 416 256 430.3 256 448C256 465.7 241.7 480 224 480zM304 448C304 434.7 314.7 424 328 424L424 424C437.3 424 448 434.7 448 448C448 461.3 437.3 472 424 472L328 472C314.7 472 304 461.3 304 448zM328 168L424 168C437.3 168 448 178.7 448 192C448 205.3 437.3 216 424 216L328 216C314.7 216 304 205.3 304 192C304 178.7 314.7 168 328 168zM304 320C304 306.7 314.7 296 328 296L424 296C437.3 296 448 306.7 448 320C448 333.3 437.3 344 424 344L328 344C314.7 344 304 333.3 304 320z"/></svg>', discovered: false };
     elements['box-isometric'] = { id: 'box-isometric', name: 'box', icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--! Font Awesome Pro 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M320 304L375.4 274.2L220.8 185.8L162.2 219L320 304zM425.2 247.3L477.8 219L320 129.6L269.3 158.3L425.2 247.3zM527.5 482.3L351.5 582C331.9 593.1 308 593.1 288.4 582L112.4 482.3C92.4 471 80 449.8 80 426.7L80 229.3C80 206.3 92.4 185 112.4 173.6L288.4 73.9C308 62.8 332 62.8 351.6 73.9L527.6 173.6C547.6 185 560 206.2 560 229.3L560 426.7C560 449.7 547.6 471 527.6 482.4z"/></svg>', discovered: false };
     elements['box-tissue'] = { id: 'box-tissue', name: 'tissue', icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--! Font Awesome Pro 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M167.9 96L328.9 96C342.7 96 354.9 104.8 359.3 117.9L376.7 170.1C381.1 183.2 393.3 192 407.1 192L467.6 192C489.4 192 504.9 213.4 498 234.1L448 384L192 384L136.7 134.9C132.2 115 147.4 96 167.9 96zM112 320L128.6 320L145.1 394.4C150 416.4 169.5 432 192 432L448 432C468.7 432 487 418.8 493.5 399.2L519.9 320L528 320C554.5 320 576 341.5 576 368L576 496C576 522.5 554.5 544 528 544L112 544C85.5 544 64 522.5 64 496L64 368C64 341.5 85.5 320 112 320z"/></svg>', discovered: false };
@@ -241,8 +241,8 @@ function init() {
     _addRecipe('snake', 'earth', 'worm');
     _addRecipe('paper', 'airplane', 'paper-plane');
 
-    _addRecipe('yarn', 'fiber', 'tarp');
-    _addRecipe('yarn', 'paper', 'tarp');
+    _addRecipe('yarn', 'fiber', 'fabric');
+    _addRecipe('yarn', 'paper', 'fabric');
     _addRecipe('paper', 'stone', 'ballot');
     _addRecipe('ballot', 'ballot', 'box-isometric');
     _addRecipe('paper', 'fiber', 'box-tissue');
@@ -263,7 +263,7 @@ function init() {
     _addRecipe('egg', 'heat', 'egg-fried');
     _addRecipe('box-isometric', 'heat', 'oven');
     _addRecipe('box-isometric', 'fire', 'oven');
-    _addRecipe('human', 'tarp', 'shirt');
+    _addRecipe('human', 'fabric', 'shirt');
     _addRecipe('egg', 'plant', 'eggplant');
     _addRecipe('egg', 'vegetable', 'eggplant');
     _addRecipe('pressure', 'tire', 'tire-flat');
@@ -289,7 +289,8 @@ function init() {
     _addRecipe('air', 'metal', 'airplane');
     _addRecipe('sky', 'metal', 'airplane');
 
-    _addRecipe('tarp', 'magic', 'ghost');
+    _addRecipe('fabric', 'magic', 'ghost');
+    _addRecipe('metal', 'magic-potion', 'cauldron');
 
     // Fruit blender rule: only the base fruit element makes juice
     _addRecipe('blender', 'fruit', 'juice');
@@ -381,7 +382,7 @@ function loadProgress() {
         // Restore unlocked elements
         if (data.unlocked && Array.isArray(data.unlocked)) {
             // Migrate old element IDs renamed in newer versions
-            data.unlocked = data.unlocked.map(id => id === 'mountain-sun' ? 'sunset' : id);
+            data.unlocked = data.unlocked.map(id => id === 'mountain-sun' ? 'sunset' : id === 'tarp' ? 'fabric' : id);
             data.unlocked.forEach(id => {
                 unlocked.add(id);
                 if (elements[id]) {
@@ -392,6 +393,10 @@ function loadProgress() {
 
         // Restore discovered recipes
         if (data.discoveredRecipes && Array.isArray(data.discoveredRecipes)) {
+            data.discoveredRecipes = data.discoveredRecipes.map(key => {
+                // Migrate old ingredient IDs renamed in newer versions
+                return key.split(',').map(part => part === 'tarp' ? 'fabric' : part).sort().join(',');
+            });
             data.discoveredRecipes.forEach(key => {
                 discoveredRecipes.add(key);
             });
