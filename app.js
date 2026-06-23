@@ -285,6 +285,8 @@ function init() {
     _addRecipe('wind', 'bird', 'feather');
     _addRecipe('metal', 'bird', 'airplane');
 
+    _addRecipe('tarp', 'magic', 'ghost');
+
     // Fruit blender rule: only the base fruit element makes juice
     _addRecipe('blender', 'fruit', 'juice');
 
