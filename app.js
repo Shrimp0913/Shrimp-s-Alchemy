@@ -285,6 +285,10 @@ function init() {
     _addRecipe('wind', 'bird', 'feather');
     _addRecipe('metal', 'bird', 'airplane');
 
+    // Air/sky + metal makes airplane
+    _addRecipe('air', 'metal', 'airplane');
+    _addRecipe('sky', 'metal', 'airplane');
+
     _addRecipe('tarp', 'magic', 'ghost');
 
     // Fruit blender rule: only the base fruit element makes juice
