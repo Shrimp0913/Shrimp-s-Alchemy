@@ -312,7 +312,6 @@ function init() {
     finalItems.add('crystal-ball');
     finalItems.add('fish-bones');
     finalItems.add('paper-plane');
-    finalItems.add('magic-potion');
     finalItems.add('firewall');
     finalItems.add('toilet-paper-under');
     finalItems.add('tire-flat');
