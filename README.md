@@ -143,6 +143,9 @@ git push origin main
 - 提交信息使用英文，例如 `feat: add cloth, eggplant and related recipes`、`fix: use icons/tire-flat.svg for flat tire`。
 - 每次更新后记得同步更新 `index.html` 的 cache buster。
 - 新增图标前优先确认 `icons/` 中是否已有同名文件。
+- **需求描述习惯**：当需要添加新元素时，通常使用以下格式描述：
+  - `A加B等于C，用xxx`（表示新元素 C 的图标文件名为 `xxx.svg`）
+  - 例如：`human加fabric等于cloth，用shirt`（表示 human + fabric = cloth，cloth 的图标使用 `icons/shirt.svg`）
 
 ---
 
