@@ -75,9 +75,6 @@ _addRecipe('water', 'fire', 'steam');
 ```
 
 - 配方顺序无关，`_addRecipe` 内部会自动排序。
-- 如果新增的是鸟类元素，建议加入 `BIRD_IDS` 数组，这样会自动继承通用规则：
-  - `wind + 任意鸟类 = feather`
-  - `metal + 任意鸟类 = airplane`
 
 ---
 
