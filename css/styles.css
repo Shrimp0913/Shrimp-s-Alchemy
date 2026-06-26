@@ -1537,7 +1537,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
 }
 
 .credits-block-team {
-    gap: 6px;
+    gap: 2px;
 }
 
 .credits-title {
