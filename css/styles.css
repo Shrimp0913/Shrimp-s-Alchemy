@@ -1563,21 +1563,12 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
     filter: brightness(0);
 }
 
-.credits-icon-codebuddy {
-    filter: none !important;
-    height: 28px;
-}
-
 .credits-icon-little {
     height: 34px;
 }
 
 [data-mode="dark"] .credits-icon {
     filter: brightness(0) invert(1);
-}
-
-[data-mode="dark"] .credits-icon-codebuddy {
-    filter: none !important;
 }
 
 .credits-divider {
