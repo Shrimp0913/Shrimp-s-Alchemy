@@ -1438,7 +1438,6 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
     overflow: hidden;
     position: relative;
     border: 1px solid var(--theme-border);
-    margin-left: -120px;
 }
 
 .settings-nav {
@@ -1555,6 +1554,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
     gap: 8px;
     flex-wrap: wrap;
     text-align: center;
+    padding-left: 60px;
 }
 
 .credits-icon {
@@ -1569,7 +1569,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
 }
 
 .credits-icon-shrimp {
-    height: 120px;
+    height: 90px;
 }
 
 [data-mode="dark"] .credits-icon {
