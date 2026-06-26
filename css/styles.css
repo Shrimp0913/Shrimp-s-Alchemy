@@ -1567,6 +1567,10 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
     height: 34px;
 }
 
+.credits-icon-shrimp {
+    height: 80px;
+}
+
 [data-mode="dark"] .credits-icon {
     filter: brightness(0) invert(1);
 }
