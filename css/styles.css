@@ -1570,7 +1570,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
 .credits-divider {
     height: 1px;
     background: var(--border-color);
-    margin: 24px 0;
+    margin: 8px 0;
 }
 
 #section-credits {
