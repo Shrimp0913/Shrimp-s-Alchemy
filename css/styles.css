@@ -1568,6 +1568,10 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
     height: 28px;
 }
 
+.credits-icon-little {
+    height: 34px;
+}
+
 [data-mode="dark"] .credits-icon {
     filter: brightness(0) invert(1);
 }
