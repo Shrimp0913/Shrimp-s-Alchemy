@@ -1565,6 +1565,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
 
 .credits-icon-codebuddy {
     filter: none !important;
+    height: 28px;
 }
 
 [data-mode="dark"] .credits-icon {
