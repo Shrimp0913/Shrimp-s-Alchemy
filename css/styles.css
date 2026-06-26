@@ -1562,7 +1562,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
 
 .credits-line-main {
     padding-left: 60px;
-    margin-bottom: -10px;
+    margin-bottom: -25px;
 }
 
 .credits-icon {
