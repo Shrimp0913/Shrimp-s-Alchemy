@@ -1557,7 +1557,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
 }
 
 .credits-line-main {
-    padding-left: 40px;
+    padding-left: 50px;
 }
 
 .credits-icon {
@@ -1573,6 +1573,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
 
 .credits-icon-shrimp {
     height: 90px;
+    margin-left: -10px;
 }
 
 [data-mode="dark"] .credits-icon {
