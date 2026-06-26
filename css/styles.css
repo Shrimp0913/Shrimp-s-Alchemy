@@ -1554,7 +1554,10 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
     gap: 8px;
     flex-wrap: wrap;
     text-align: center;
-    padding-left: 60px;
+}
+
+.credits-line-main {
+    padding-left: 40px;
 }
 
 .credits-icon {
