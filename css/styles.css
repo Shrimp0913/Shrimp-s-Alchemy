@@ -1580,7 +1580,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
 
 .credits-icon-shrimp {
     height: 90px;
-    margin-left: -28px;
+    margin-left: -32px;
 }
 
 [data-mode="dark"] .credits-icon {
