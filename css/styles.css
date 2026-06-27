@@ -1538,7 +1538,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
 
 .credits-block-team .credits-title,
 #section-credits .credits-block:first-child .credits-title {
-    margin-bottom: -40px;
+    margin-bottom: -20px;
 }
 
 .credits-title {
@@ -1564,7 +1564,7 @@ body[data-mode="light"][data-theme]:not([data-theme=""]) .final-item-chip .el-na
 .credits-line-main,
 #section-credits .credits-block:first-child .credits-line:first-of-type {
     padding-left: 40px;
-    margin-bottom: -30px;
+    margin-bottom: -10px;
 }
 
 .credits-icon {
