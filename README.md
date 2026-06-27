@@ -109,14 +109,19 @@ _addRecipe('water', 'fire', 'steam');
 
 ## 缓存清除（Cache Buster）
 
-每次修改 `app.js` 或 `css/styles.css` 后，需要在 `index.html` 中更新版本号，避免浏览器缓存旧文件：
+项目已内置自动缓存版本号管理，无需手动修改 `link` 或 `script` 的 `href`/`src`。
+
+只需在 `index.html` 的 `<head>` 顶部修改 `APP_CACHE_VERSION` 的值即可：
 
 ```html
-<link rel="stylesheet" href="css/styles.css?v=120">
-<script src="app.js?v=120"></script>
+<script>
+    const APP_CACHE_VERSION = 127;
+</script>
 ```
 
-建议每次发布时把两个 `v=` 同步递增。
+- 修改 `app.js` 或 `css/styles.css` 后，**只改这一个数字**（递增即可）。
+- 被标记了 `data-cache-bust` 的 `link` 和 `script` 会自动追加 `?v=xxx`。
+- 不要手动搜索替换 `?v=` 字符串，否则极易误删 HTML 内容。
 
 ---
 
@@ -154,3 +159,9 @@ git push origin main
 - 游戏进度保存在浏览器 `localStorage` 中，键名为 `shrimpAlchemy_save`。如果修改了版本号 `GAME_VERSION`，旧存档可能会被清空或重置。
 - 配方注册时，如果两个元素组合已经存在，后注册的会覆盖先注册的，请注意检查冲突。
 - 尽量保持 `app.js` 中的元素定义和配方注册顺序清晰，方便后续查找。
+- **提交前务必检查 `git diff`**：
+  ```bash
+  git diff
+  ```
+  确认只修改了预期的行，没有误删 HTML/CSS 结构后再提交和推送。
+- **不要手动搜索替换 `?v=xxx` 字符串**，使用 `index.html` 顶部的 `APP_CACHE_VERSION` 统一管理。

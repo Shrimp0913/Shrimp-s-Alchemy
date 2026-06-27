@@ -21,7 +21,19 @@
     <link rel="stylesheet" href="css/fa-all.min.css">
     <link rel="stylesheet" href="css/fa-regular.min.css">
     <link rel="stylesheet" href="css/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/styles.css?v=126">
+    <link rel="stylesheet" href="css/styles.css" data-cache-bust>
+    <script>
+        const APP_CACHE_VERSION = 127;
+        // 自动给 data-cache-bust 的 CSS 添加版本号
+        (function() {
+            document.querySelectorAll('link[data-cache-bust]').forEach(function(el) {
+                var url = el.getAttribute('href');
+                if (url && !url.includes('?')) {
+                    el.href = url + '?v=' + APP_CACHE_VERSION;
+                }
+            });
+        })();
+    </script>
 </head>
 <body>
     <!-- Left Sidebar -->
@@ -228,6 +240,17 @@
         </div>
     </div>
 
-    <script src="app.js?v=126"></script>
+    <script>
+        // 自动给 data-cache-bust 的 JS 添加版本号
+        (function() {
+            document.querySelectorAll('script[data-cache-bust]').forEach(function(el) {
+                var url = el.getAttribute('src');
+                if (url && !url.includes('?')) {
+                    el.src = url + '?v=' + APP_CACHE_VERSION;
+                }
+            });
+        })();
+    </script>
+    <script src="app.js" data-cache-bust></script>
 </body>
 </html>
