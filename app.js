@@ -3,10 +3,10 @@
 // ==========================================
 
 const BASE_ELEMENTS = [
-    { id: 'water', name: 'water', icon: 'icons/water.svg' },
-    { id: 'fire', name: 'fire', icon: 'icons/fire.svg' },
-    { id: 'earth', name: 'earth', icon: 'icons/earth.svg' },
-    { id: 'air', name: 'air', icon: 'icons/air.svg' },
+    { id: 'water', name: 'water', icon: '<i class="fas fa-tint"></i>' },
+    { id: 'fire', name: 'fire', icon: '<i class="fas fa-fire"></i>' },
+    { id: 'earth', name: 'earth', icon: '<i class="fas fa-mound"></i>' },
+    { id: 'air', name: 'air', icon: '<i class="fas fa-wind"></i>' },
 ];
 
 let elements = {};
@@ -57,58 +57,58 @@ async function init() {
     await preloadIcons();
 
     // Register new elements
-    elements['lake'] = { id: 'lake', name: 'lake', icon: 'icons/lake.svg', discovered: false };
+    elements['lake'] = { id: 'lake', name: 'lake', icon: '<i class="fas fa-water"></i>', discovered: false };
     elements['ocean'] = { id: 'ocean', name: 'ocean', icon: 'icons/ocean.svg', discovered: false };
-    elements['land'] = { id: 'land', name: 'land', icon: 'icons/land.svg', discovered: false };
-    elements['planet'] = { id: 'planet', name: 'planet', icon: 'icons/planet.svg', discovered: false };
-    elements['pressure'] = { id: 'pressure', name: 'pressure', icon: 'icons/pressure.svg', discovered: false };
-    elements['heat'] = { id: 'heat', name: 'heat', icon: 'icons/heat.svg', discovered: false };
+    elements['land'] = { id: 'land', name: 'land', icon: '<i class="fas fa-land-mine-on"></i>', discovered: false };
+    elements['planet'] = { id: 'planet', name: 'planet', icon: '<i class="fas fa-earth-americas"></i>', discovered: false };
+    elements['pressure'] = { id: 'pressure', name: 'pressure', icon: '<i class="fas fa-angle-double-down"></i>', discovered: false };
+    elements['heat'] = { id: 'heat', name: 'heat', icon: '<i class="fas fa-temperature-high"></i>', discovered: false };
     elements['stone'] = { id: 'stone', name: 'stone', icon: 'icons/stone.svg', discovered: false };
-    elements['hill'] = { id: 'hill', name: 'hill', icon: 'icons/hill.svg', discovered: false };
-    elements['mountain'] = { id: 'mountain', name: 'mountain', icon: 'icons/mountain.svg', discovered: false };
+    elements['hill'] = { id: 'hill', name: 'hill', icon: '<i class="fas fa-hill-rockslide"></i>', discovered: false };
+    elements['mountain'] = { id: 'mountain', name: 'mountain', icon: '<i class="fas fa-mountain"></i>', discovered: false };
     elements['range'] = { id: 'range', name: 'range', icon: 'icons/range.svg', discovered: false };
-    elements['wind'] = { id: 'wind', name: 'wind', icon: 'icons/wind.svg', discovered: false };
-    elements['cold'] = { id: 'cold', name: 'cold', icon: 'icons/cold.svg', discovered: false };
+    elements['wind'] = { id: 'wind', name: 'wind', icon: '<i class="fas fa-fan"></i>', discovered: false };
+    elements['cold'] = { id: 'cold', name: 'cold', icon: '<i class="fas fa-temperature-low"></i>', discovered: false };
     elements['smoke'] = { id: 'smoke', name: 'smoke', icon: 'icons/smoke.svg', discovered: false };
     elements['lightning'] = { id: 'lightning', name: 'lightning', icon: 'icons/lightning.svg', discovered: false };
     elements['rain'] = { id: 'rain', name: 'rain', icon: 'icons/rain.svg', discovered: false };
-    elements['ice'] = { id: 'ice', name: 'ice', icon: 'icons/ice.svg', discovered: false };
+    elements['ice'] = { id: 'ice', name: 'ice', icon: '<i class="fas fa-cubes"></i>', discovered: false };
     elements['icicles'] = { id: 'icicles', name: 'icicles', icon: 'icons/icicles.svg', discovered: false };
-    elements['snowflake'] = { id: 'snowflake', name: 'snowflake', icon: 'icons/snowflake.svg', discovered: false };
+    elements['snowflake'] = { id: 'snowflake', name: 'snowflake', icon: '<i class="fas fa-snowflake"></i>', discovered: false };
     elements['snow'] = { id: 'snow', name: 'snow', icon: 'icons/snow.svg', discovered: false };
     elements['hail'] = { id: 'hail', name: 'hail', icon: 'icons/hail.svg', discovered: false };
-    elements['comet'] = { id: 'comet', name: 'comet', icon: 'icons/comet.svg', discovered: false };
+    elements['comet'] = { id: 'comet', name: 'comet', icon: '<i class="fas fa-meteor"></i>', discovered: false };
     elements['glass-water'] = { id: 'glass-water', name: 'glass water', icon: 'icons/glass-water.svg', discovered: false };
-    elements['magic'] = { id: 'magic', name: 'magic', icon: 'icons/magic.svg', discovered: false };
+    elements['magic'] = { id: 'magic', name: 'magic', icon: '<i class="fas fa-hand-sparkles"></i>', discovered: false };
     elements['magic-potion'] = { id: 'magic-potion', name: 'magic potion', icon: 'icons/magic-potion.svg', discovered: false };
     elements['electricity'] = { id: 'electricity', name: 'electricity', icon: 'icons/electricity.svg', discovered: false };
-    elements['tap'] = { id: 'tap', name: 'tap', icon: 'icons/tap.svg', discovered: false };
-    elements['ship'] = { id: 'ship', name: 'ship', icon: 'icons/ship.svg', discovered: false };
-    elements['tsunami'] = { id: 'tsunami', name: 'tsunami', icon: 'icons/tsunami.svg', discovered: false };
-    elements['lightbulb'] = { id: 'lightbulb', name: 'lightbulb', icon: 'icons/lightbulb.svg', discovered: false };
-    elements['airplane'] = { id: 'airplane', name: 'airplane', icon: 'icons/airplane.svg', discovered: false };
-    elements['magnet'] = { id: 'magnet', name: 'magnet', icon: 'icons/magnet.svg', discovered: false };
+    elements['tap'] = { id: 'tap', name: 'tap', icon: '<div style="position:relative;display:inline-flex;align-items:center;justify-content:center;"><i class="fas fa-faucet" style="font-size:1em;"></i><i class="fas fa-tint" style="font-size:0.25em;position:absolute;bottom:-0.65em;right:-0.1em;"></i></div>', discovered: false };
+    elements['ship'] = { id: 'ship', name: 'ship', icon: '<i class="fas fa-ship"></i>', discovered: false };
+    elements['tsunami'] = { id: 'tsunami', name: 'tsunami', icon: '<i class="fas fa-house-tsunami"></i>', discovered: false };
+    elements['lightbulb'] = { id: 'lightbulb', name: 'lightbulb', icon: '<i class="fas fa-lightbulb"></i>', discovered: false };
+    elements['airplane'] = { id: 'airplane', name: 'airplane', icon: '<i class="fas fa-plane"></i>', discovered: false };
+    elements['magnet'] = { id: 'magnet', name: 'magnet', icon: '<i class="fas fa-magnet"></i>', discovered: false };
     elements['blade'] = { id: 'blade', name: 'blade', icon: 'icons/blade.svg', discovered: false };
     elements['stick'] = { id: 'stick', name: 'stick', icon: 'icons/stick.svg', discovered: false };
-    elements['sun'] = { id: 'sun', name: 'sun', icon: 'icons/sun.svg', discovered: false };
-    elements['sunset'] = { id: 'sunset', name: 'sunset', icon: 'icons/sunset.svg', discovered: false };
+    elements['sun'] = { id: 'sun', name: 'sun', icon: '<i class="fas fa-sun"></i>', discovered: false };
+    elements['sunset'] = { id: 'sunset', name: 'sunset', icon: '<i class="fas fa-mountain-sun"></i>', discovered: false };
     elements['moon'] = { id: 'moon', name: 'moon', icon: 'icons/moon.svg', discovered: false };
-    elements['tornado'] = { id: 'tornado', name: 'tornado', icon: 'icons/tornado.svg', discovered: false };
+    elements['tornado'] = { id: 'tornado', name: 'tornado', icon: '<i class="fas fa-tornado"></i>', discovered: false };
     elements['metal'] = { id: 'metal', name: 'metal', icon: 'icons/metal.svg', discovered: false };
-    elements['volcano'] = { id: 'volcano', name: 'volcano', icon: 'icons/volcano.svg', discovered: false };
-    elements['burst'] = { id: 'burst', name: 'burst', icon: 'icons/burst.svg', discovered: false };
-    elements['glass'] = { id: 'glass', name: 'glass', icon: 'icons/glass.svg', discovered: false };
-    elements['glasses'] = { id: 'glasses', name: 'glasses', icon: 'icons/glasses.svg', discovered: false };
-    elements['time'] = { id: 'time', name: 'hourglass', icon: 'icons/time.svg', discovered: false };
-    elements['steam'] = { id: 'steam', name: 'steam', icon: 'icons/steam.svg', discovered: false };
+    elements['volcano'] = { id: 'volcano', name: 'volcano', icon: '<i class="fas fa-volcano"></i>', discovered: false };
+    elements['burst'] = { id: 'burst', name: 'burst', icon: '<i class="fas fa-burst"></i>', discovered: false };
+    elements['glass'] = { id: 'glass', name: 'glass', icon: '<i class="fas fa-window-maximize"></i>', discovered: false };
+    elements['glasses'] = { id: 'glasses', name: 'glasses', icon: '<i class="fas fa-glasses"></i>', discovered: false };
+    elements['time'] = { id: 'time', name: 'hourglass', icon: '<i class="fas fa-hourglass-half"></i>', discovered: false };
+    elements['steam'] = { id: 'steam', name: 'steam', icon: '<i class="fas fa-smog"></i>', discovered: false };
     elements['cloud'] = { id: 'cloud', name: 'cloud', icon: 'icons/cloud.svg', discovered: false };
     elements['fog'] = { id: 'fog', name: 'fog', icon: 'icons/fog.svg', discovered: false };
     elements['sand'] = { id: 'sand', name: 'sand', icon: 'icons/sand.svg', discovered: false };
-    elements['light'] = { id: 'light', name: 'light', icon: 'icons/light.svg', discovered: false };
-    elements['star'] = { id: 'star', name: 'star', icon: 'icons/star.svg', discovered: false };
+    elements['light'] = { id: 'light', name: 'light', icon: '<i class="bi bi-stars"></i>', discovered: false };
+    elements['star'] = { id: 'star', name: 'star', icon: '<i class="fas fa-star"></i>', discovered: false };
     elements['night'] = { id: 'night', name: 'night', icon: 'icons/night.svg', discovered: false };
-    elements['shooting-star'] = { id: 'shooting-star', name: 'shooting star', icon: 'icons/shooting-star.svg', discovered: false };
-    elements['energy'] = { id: 'energy', name: 'energy', icon: 'icons/energy.svg', discovered: false };
+    elements['shooting-star'] = { id: 'shooting-star', name: 'shooting star', icon: '<div style="position:relative;display:inline-flex;align-items:center;justify-content:center;"><i class="fas fa-star" style="font-size:0.85em;"></i><div style="position:absolute;transform:rotate(-35deg);top:-0.45em;right:-0.5em;pointer-events:none;"><div style="width:0.8em;height:0.08em;background:currentColor;border-radius:0.04em;position:absolute;top:0;right:0;"></div><div style="width:0.6em;height:0.08em;background:currentColor;border-radius:0.04em;position:absolute;top:0.2em;right:0.2em;"></div><div style="width:0.45em;height:0.08em;background:currentColor;border-radius:0.04em;position:absolute;top:0.4em;right:0.4em;"></div></div></div>', discovered: false };
+    elements['energy'] = { id: 'energy', name: 'energy', icon: '<i class="fa-solid fa-bolt-lightning"></i>', discovered: false };
     elements['rainbow'] = { id: 'rainbow', name: 'rainbow', icon: 'icons/rainbow.svg', discovered: false };
     elements['ice-water'] = { id: 'ice-water', name: 'ice water', icon: 'icons/ice-water.svg', discovered: false };
     elements['starfish'] = { id: 'starfish', name: 'starfish', icon: 'icons/starfish.svg', discovered: false };
@@ -117,7 +117,7 @@ async function init() {
     elements['avalanche'] = { id: 'avalanche', name: 'avalanche', icon: 'icons/avalanche.svg', discovered: false };
     elements['sunglasses'] = { id: 'sunglasses', name: 'sunglasses', icon: 'icons/sunglasses.svg', discovered: false };
     elements['ufo'] = { id: 'ufo', name: 'ufo', icon: 'icons/ufo.svg', discovered: false };
-    elements['life'] = { id: 'life', name: 'life', icon: 'icons/life.svg', discovered: false };
+    elements['life'] = { id: 'life', name: 'life', icon: '<i class="fa-solid fa-dna"></i>', discovered: false };
     elements['animal'] = { id: 'animal', name: 'animal', icon: 'icons/animal.svg', discovered: false };
     elements['sky'] = { id: 'sky', name: 'sky', icon: 'icons/sky.svg', discovered: false };
     elements['bird'] = { id: 'bird', name: 'bird', icon: 'icons/bird.svg', discovered: false };
@@ -126,13 +126,13 @@ async function init() {
     elements['island'] = { id: 'island', name: 'island', icon: 'icons/island.svg', discovered: false };
     elements['human'] = { id: 'human', name: 'human', icon: 'icons/human.svg', discovered: false };
     elements['alien'] = { id: 'alien', name: 'alien', icon: 'icons/alien.svg', discovered: false };
-    elements['scissors'] = { id: 'scissors', name: 'scissors', icon: 'icons/scissors.svg', discovered: false };
+    elements['scissors'] = { id: 'scissors', name: 'scissors', icon: '<i class="fas fa-scissors"></i>', discovered: false };
     elements['civilization'] = { id: 'civilization', name: 'civilization', icon: 'icons/civilization.svg', discovered: false };
     elements['plant'] = { id: 'plant', name: 'plant', icon: 'icons/plant.svg', discovered: false };
     elements['tree'] = { id: 'tree', name: 'tree', icon: 'icons/tree.svg', discovered: false };
     elements['forest'] = { id: 'forest', name: 'forest', icon: 'icons/forest.svg', discovered: false };
     elements['seed'] = { id: 'seed', name: 'seed', icon: 'icons/seed.svg', discovered: false };
-    elements['leaf'] = { id: 'leaf', name: 'leaf', icon: 'icons/leaf.svg', discovered: false };
+    elements['leaf'] = { id: 'leaf', name: 'leaf', icon: '<i class="fas fa-leaf"></i>', discovered: false };
     elements['brick'] = { id: 'brick', name: 'brick', icon: 'icons/brick.svg', discovered: false };
     elements['wall'] = { id: 'wall', name: 'wall', icon: 'icons/wall.svg', discovered: false };
     elements['firewall'] = { id: 'firewall', name: 'firewall', icon: 'icons/firewall.svg', discovered: false };
