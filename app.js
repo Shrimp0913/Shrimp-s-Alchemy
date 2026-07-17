@@ -497,6 +497,8 @@ async function init() {
     finalItems.add('tire-flat');
     finalItems.add('cat-space');
 
+    await preloadIcons();
+
     renderSidebar();
     updateAchievementCount();
     bindEvents();
