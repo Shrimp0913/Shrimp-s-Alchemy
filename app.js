@@ -54,7 +54,6 @@ async function init() {
         elements[el.id] = { ...el, discovered: true };
         unlocked.add(el.id);
     });
-    await preloadIcons();
 
     // Register new elements
     elements['lake'] = { id: 'lake', name: 'lake', icon: '<i class="fas fa-water"></i>', discovered: false };
